@@ -1,0 +1,17 @@
+<nav class="navbar" ng-mouseenter="expand = true" ng-mouseleave="expand = false">
+	
+	<span ng-if="!expand"><h5 class="center">RENDERHOUSE</h5></span>
+	<span ng-if="expand"><h4><a ui-sref="home">RENDERHOUSE</a></h4></span>
+
+
+	<div class="navigation active" ng-if="expand">
+		<ul>
+			<!-- Not Logged In / Logged in should change this-->
+			<li><a ui-sref="login">Sign In</a></li>
+			<li>Join</li>
+			<li>Cart</li>
+			<li>Upload</li>
+		</ul>
+	</div>
+
+</nav>
