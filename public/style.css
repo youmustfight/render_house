@@ -1,140 +1,110 @@
-* {
-  box-sizing: border-box; }
+/*---------------------------------------------- 
+Reset CSS 2.0
+	http://meyerweb.com/eric/tools/css/reset/ 
+	v2.0 | 20110126
+	License: none (public domain)
+------------------------------------------------*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
 
 body {
-  background: #fdfdfd; }
+  line-height: 1; }
 
-#main {
-  padding-top: 60px;
-  width: 1200px;
-  margin: 0 auto; }
+ol, ul {
+  list-style: none; }
 
-fullstack-logo {
-  display: block; }
-  fullstack-logo img {
-    display: block;
-    width: 100%; }
+blockquote, q {
+  quotes: none; }
 
-navbar {
-  display: block;
-  background: white;
-  border-bottom: 1px solid black;
-  box-shadow: 1px 1px 14px -3px black; }
-  navbar .container {
-    width: 91%;
-    max-width: 1340px;
-    padding-top: 20px; }
-  navbar fullstack-logo {
-    margin-top: 5px;
-    margin-right: 20px;
-    width: 40px; }
-  navbar a {
-    color: black;
-    font-size: 16px; }
-  navbar .nav > li > a {
-    cursor: pointer;
-    transition: color 0.2s; }
-    navbar .nav > li > a.active {
-      color: #c80a0c; }
-    navbar .nav > li > a:hover {
-      background: none;
-      color: #f31214; }
-    navbar .nav > li > a:focus {
-      background: none; }
-  navbar .login-button {
-    float: right;
-    border: 1px solid black;
-    margin-top: 10px;
-    background: none;
-    outline: none !important; }
-  navbar .welcome {
-    float: right;
-    margin-top: 12px; }
-    navbar .welcome span {
-      color: white; }
-    navbar .welcome a {
-      color: #f30046;
-      cursor: pointer; }
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
 
-#home fullstack-logo {
-  padding-top: 30px;
-  width: 150px;
-  margin: 0 auto; }
-#home h1 {
-  margin-top: 40px;
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/*---------------------------------------------- 
+Colors
+------------------------------------------------*/
+/*---------------------------------------------- 
+General
+------------------------------------------------*/
+#app-frame {
+  width: 43vw;
+  height: 100vh;
+  float: right;
+  background-color: white;
+  overflow: scroll;
+  padding-left: 1vh;
+  padding-right: 1vh; }
+
+.app-content {
+  padding-top: 35vh;
+  padding-bottom: 1000px; }
+
+#top {
+  width: 100%;
+  position: fixed;
+  top: 0; }
+
+.center {
   text-align: center; }
 
-#about {
-  margin: 0 auto;
-  width: 90%; }
-  #about:after {
-    content: "";
-    display: table;
-    clear: both; }
-  #about p {
-    width: 40%;
-    margin: 0 auto;
-    text-align: justify;
-    font-size: 22px;
-    font-weight: 300;
-    float: left; }
-  #about .carousel {
-    float: right;
-    width: 55%;
-    overflow: hidden;
-    margin: 0 auto; }
-    #about .carousel .carousel-inner {
-      height: 500px !important; }
-    #about .carousel .carousel-control {
-      background: none; }
-    #about .carousel .carousel-indicators {
-      display: none; }
-    #about .carousel img {
-      max-width: 100%;
-      max-height: 500px;
-      display: block;
-      margin: 0 auto; }
+/*---------------------------------------------- 
+Typography
+------------------------------------------------*/
+@font-face {
+  font-family: 'PxGLight';
+  src: url("../../fonts/PxGroteskLight.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
 
-tutorial-section {
-  display: block;
-  width: 90%;
-  margin: 10px auto;
-  padding: 20px 0 60px 0; }
-  tutorial-section > h1 {
-    margin: 20px 0 40px 0;
-    text-align: center;
-    font-weight: bold; }
+@font-face {
+  font-family: 'PxGRegular';
+  src: url("../../fonts/PxGroteskRegular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
 
-tutorial-video {
-  display: block;
-  width: 600px;
-  margin: 0 auto; }
-  tutorial-video h1 {
-    font-weight: 300;
-    font-size: 24px;
-    margin-bottom: 15px; }
-  tutorial-video iframe {
-    width: 600px;
-    height: 400px; }
+@font-face {
+  font-family: 'PxGBold';
+  src: url("../../fonts/PxGroteskBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
 
-tutorial-section-menu {
-  display: block; }
-  tutorial-section-menu:after {
-    content: "";
-    display: table;
-    clear: both; }
-  tutorial-section-menu ul {
-    margin-left: 23px;
-    list-style-type: none;
-    font-weight: 300; }
-    tutorial-section-menu ul li {
-      float: left;
-      margin-right: 40px;
-      padding: 10px;
-      cursor: pointer; }
-      tutorial-section-menu ul li:hover {
-        background: #f3f3f3; }
+body {
+  font-family: 'PxGRegular', sans-serif;
+  color: #1a2a3a; }
 
-#login-form {
-  width: 60%;
-  margin: 0 auto; }
+h1 {
+  font-size: 3em;
+  font-family: 'PxGBold', sans-serif; }
+
+h3 {
+  font-size: 1em;
+  font-family: 'PxGLight', sans-serif;
+  color: #1a2a3a;
+  text-transform: uppercase; }
+
+h4 {
+  font-size: .8em;
+  font-family: 'PxGBold', sans-serif; }
+
+h5 {
+  font-size: .6em;
+  font-family: 'PxGBold', sans-serif; }
+
+a {
+  text-decoration: underline; }
+
+li {
+  font-family: 'PxGBold', sans-serif; }
