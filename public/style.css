@@ -15,46 +15,56 @@ fullstack-logo {
     display: block;
     width: 100%; }
 
-navbar {
-  display: block;
-  background: white;
-  border-bottom: 1px solid black;
-  box-shadow: 1px 1px 14px -3px black; }
-  navbar .container {
-    width: 91%;
-    max-width: 1340px;
-    padding-top: 20px; }
-  navbar fullstack-logo {
-    margin-top: 5px;
-    margin-right: 20px;
-    width: 40px; }
-  navbar a {
-    color: black;
-    font-size: 16px; }
-  navbar .nav > li > a {
-    cursor: pointer;
-    transition: color 0.2s; }
-    navbar .nav > li > a.active {
-      color: #c80a0c; }
-    navbar .nav > li > a:hover {
-      background: none;
-      color: #f31214; }
-    navbar .nav > li > a:focus {
-      background: none; }
-  navbar .login-button {
-    float: right;
-    border: 1px solid black;
-    margin-top: 10px;
-    background: none;
-    outline: none !important; }
-  navbar .welcome {
-    float: right;
-    margin-top: 12px; }
-    navbar .welcome span {
-      color: white; }
-    navbar .welcome a {
-      color: #f30046;
-      cursor: pointer; }
+.navbar {
+  width: 100%;
+  padding: .2em;
+  top: 0;
+  background-color: white;
+  transition: .2s;
+  box-shadow: 0em 0em 2em #cfddea;
+}
+.navbar h5 {
+  padding-top: .2em;
+  color: #1a2a3a;
+}
+.navbar h5 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar:hover {
+  opacity: 1;
+  background-color: #1a2a3a;
+  padding: .6em;
+}
+.navbar:hover h4 {
+  color: #ffffff;
+  padding-top: .2em;
+  padding-left: 5em;
+  float: left;
+}
+.navbar:hover h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+.navbar:hover a {
+  color: #ffffff;
+}
+
+.navigation {
+  text-align: right;
+  padding-right: 5em;
+  color: #ffffff;
+}
+
+.active li {
+  display: inline;
+  color: white;
+  font-size: .7em;
+  text-transform: uppercase;
+  margin-left: 2em;
+}
+
 
 #home fullstack-logo {
   padding-top: 30px;
