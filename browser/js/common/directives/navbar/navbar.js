@@ -52,6 +52,6 @@
 app.directive('navbar', function () {
 	return {
 		restrict: "E",
-		templateUrl: "../browser/components/navbar/navbar.html"
+		templateUrl: "js/common/directives/navbar/navbar.html"
 	}
 });
