@@ -6,12 +6,12 @@ app.config(function ($stateProvider) {
 		templateUrl: '/browser/app/product/list/product.list.html',
 		controller: 'ProductListCtrl',
 		resolve: {
-			stories: function (Product) {
-				return Product.fetchAll();
-			},
-			users: function (User) {
-				return User.fetchAll();
-			}
+			// stories: function (Product) {
+			// 	return Product.fetchAll();
+			// },
+			// users: function (User) {
+			// 	return User.fetchAll();
+			// }
 		}
 	});
 });
