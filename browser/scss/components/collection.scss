@@ -1,0 +1,14 @@
+.collection {
+
+	width: 100%;
+	transition: .2s;
+	position: relative;
+	height: 0em;
+	overflow-y: hidden;
+	
+	background-color: lighten($primary-black, 4%);
+}
+
+.collection-open {
+		height: 12em;
+}

@@ -1,0 +1,56 @@
+.navbar {
+	width: 100%;
+	padding: .4em;
+	top: 0;
+	background-color: lighten($primary-black, 85%);
+	transition: .2s;
+	h5 {
+		padding-top: .2em;
+		color: $primary-black;
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+	box-shadow: 0em 0em 2em lighten($primary-black, 70%);
+}
+.navbar:hover, .navbar-expanded {
+	opacity: 1;
+	background-color: $primary-black;
+	padding: .6em;
+	h4 {
+		color: $primary-white;
+		padding-top: .2em;
+		padding-left: 5em;
+		float: left;
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+	a {
+		color: $primary-white;
+	}
+}
+
+.navigation {
+	text-align: right;
+	padding-right:8em;
+	color: $primary-white;
+	li {
+		display: inline;
+		color: $primary-light-gray;
+		font-size: .7em;
+		text-transform: uppercase;
+		margin-left: 2.5em;
+		font-family: 'PxGBold', sans-serif;	
+	}	
+	.empty {
+		opacity: .3;
+		text-decoration: none;
+	}
+	.active {
+		color: $primary-white;
+	}
+}
+

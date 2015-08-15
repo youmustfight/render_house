@@ -1,0 +1,17 @@
+<h1 class="very-large-vertical-space">Helping You Build the Future Web</h1>
+<h3>Or just dope stuff</h3>
+<br>
+<button ng-click="changeModel()">Load baymax</button>
+
+<div class="container">
+	<ul>
+		<li ng-repeat="model in models" class="render-tile">
+			<img src="{{model.snapshotFileUrl}}" />
+			<h2>{{model.title}}</h2>
+			<h4 ui-sref="user">{{model.creator}}</h4>
+			<ul class="tags">
+				<li ng-repeat="tag in model.tags" class="tag">{{tag}}</li>
+			</ul>
+		</li>
+	</ul>
+</div>

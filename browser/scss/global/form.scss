@@ -1,0 +1,26 @@
+input {
+	height: 1.6em;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid $primary-light-gray;
+	font-size: 1.2em;
+	font-family: 'PxGRegular', sans-serif;
+	background: transparent;
+	margin-bottom: .6em;
+}
+
+button {
+	padding: 1.2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	text-transform: uppercase;
+	font-family: 'PxGBold', sans-serif;	
+	border: none;	
+	color: darken($primary-white, 20%);
+	background-color: $primary-black;
+}
+
+button:hover {
+	color: $primary-white;
+	background-color: lighten($primary-black, 10%);
+}

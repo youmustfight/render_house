@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'PxGLight';
+  src: url("../../fonts/PxGroteskLight.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PxGRegular';
+  src: url("../../fonts/PxGroteskRegular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PxGBold';
+  src: url("../../fonts/PxGroteskBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+	font-family: 'PxGRegular', sans-serif;
+	color: $primary-black;
+}
+
+h1 {
+	font-size: 3em;
+	font-family: 'PxGBold', sans-serif;
+}
+
+h3 {
+  font-size: 1em;
+  font-family: 'PxGLight', sans-serif;
+  color: #1a2a3a;
+}
+
+h4 {
+	font-size: .8em;
+	font-family: 'PxGBold', sans-serif;
+}
+
+h5 {
+	font-size: .6em;
+	font-family: 'PxGBold', sans-serif;
+	text-transform: uppercase;
+}
+
+a {
+	text-decoration: underline;
+}
+
+li {
+	font-family: 'PxGBold', sans-serif;		
+}
+
+.tag {
+	font-size: .7em;
+	font-family: 'PxGRegular', sans-serif;
+	color: $primary-black;
+}
+
+.tag:hover {
+	text-decoration: underline;
+}
+
