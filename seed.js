@@ -22,37 +22,63 @@ var Promise = require('bluebird');
 var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
+var Product = Promise.promisifyAll(mongoose.model('Product'));
+var _ = require('lodash');
+var chance = require('chance')();
 
-var seedUsers = function () {
+totalProducts = 500;
 
-    var users = [
-        {
-            email: 'testing@fsa.com',
-            password: 'password'
-        },
-        {
-            email: 'obama@gmail.com',
-            password: 'potus'
-        }
-    ];
 
-    return User.createAsync(users);
 
-};
+function generateTags(){
+   var listOfIndustryTags = ['architectural','video games','general design','advertisers','academics']
+   var lengthIndTags = listOfIndustryTags.length;
+   var listOfSpecificTags = ['bench','chair','table','floating island','car','person','zombie']
+   var lengthSpecTags = listOfSpecificTags.length;
+   return [listOfIndustryTags[Math.floor(Math.random()*lengthIndTags)], listOfSpecificTags[Math.floor(Math.random()*lengthSpecTags)]]
+}
+
+function randPhoto () {
+   return 'http://http://lorempixel.com/g/400/200/'
+}
+
+
+
+var seedProduct= function(){
+   return new Product({
+       title: chance.name(),
+       description: chance.paragraph({sentence:4}), // reeturns a rand paragraph with 4 sentences
+       snapshotFileUrl: randPhoto(), //return the website lorempixel
+       highResFileUrl: "example high res file here",
+       tags: generateTags(), // runs function above and assigns two types of tags to every instance
+       license: chance.natural(), // generates a number between 0 to 9007199254740992
+       formatsAvailable: "JSON", //hardcoded for now since we only have JSON object
+       price: chance.integer({max:1000}), // generates 
+       freeOption: Math.random() < .5,
+       owner: chance.name(),
+       timesDownloaded: chance.integer({max:20}),
+       // comments: [{type: mongoose.Schema.Types.ObjectId, ref:"UserComments"}]
+   })
+}
+
+function generateAll () {
+   return products = _.times(totalProducts, seedProduct);
+}
+
+function seed () {
+   var products = generateAll();
+   return Promise.map(products, function (prods) {
+       return prods.save();
+   });
+}
+
 
 connectToDb.then(function () {
-    User.findAsync({}).then(function (users) {
-        if (users.length === 0) {
-            return seedUsers();
-        } else {
-            console.log(chalk.magenta('Seems to already be user data, exiting!'));
-            process.kill(0);
-        }
-    }).then(function () {
-        console.log(chalk.green('Seed successful!'));
-        process.kill(0);
-    }).catch(function (err) {
-        console.error(err);
-        process.kill(1);
-    });
+   seed()
+   .then(function(data){
+       console.log('successful seed');
+   })
+   .catch(function(err){
+       console.log(err)
+   });
 });
