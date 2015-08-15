@@ -1,0 +1,36 @@
+.search-icon  {
+	width: 2.2em;
+	height: 2.5em;
+	padding-left: 4.4em;
+	padding-top: .8em;
+	fill: $primary-light-gray;
+	transition: .2s;
+}
+
+.search-icon:hover {
+	fill: $primary-black;
+}
+
+.search-bar{
+	width: 100%;
+	background-color: rgba(255,255,255,0);
+	height: 4em;
+	transition: .2s;
+	box-shadow: 0em 0em 2px lighten($primary-black, 75%);
+
+	input {
+		margin-left: .4em;
+		vertical-align: top;
+		height: 100%;
+		border: none;
+		font-size: 2em;
+		font-family: 'PxGRegular', sans-serif;
+		width: 80%;
+		background: transparent;
+	}
+}
+
+.search-engaged {
+	background-color: rgba(255,255,255,.8);
+}
+

@@ -1,0 +1,27 @@
+.render-tile{
+	width: 30%;
+	float: left;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	// text-align: center;
+}
+
+.render-tile img {
+	width: 100%;
+	height: auto;
+}
+
+.tags li {
+	display: inline;
+	float: left;
+	padding-right: 1vw;
+	text-transform: lowercase;
+}
+
+// .tags li:last-child {
+// 	padding-right: 0;
+// }
+
+.tags {
+	margin-top: .2em;
+}

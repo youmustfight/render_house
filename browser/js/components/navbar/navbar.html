@@ -1,0 +1,17 @@
+<nav class="navbar" ng-class="{'navbar-expanded': navbarExpand}" ng-mouseover="navbarExpand = true" ng-mouseleave="navbarExpand = false">
+	
+	<span ng-if="!navbarExpand"><h5 class="center">RENDERHOUSE</h5></span>
+	<span ng-if="navbarExpand" ui-sref="listing"><h4>RENDERHOUSE</h4></span>
+
+
+	<div class="navigation" ng-show="navbarExpand">
+		<ul>
+			<!-- Not Logged In / Logged in should change this-->
+			<li ui-sref="login" ui-sref-active="active">Sign In</li>
+			<li ui-sref="signUp" ui-sref-active="active">Sign Up</li>
+			<li ui-sref="upload" ui-sref-active="active">Upload a Model</li>
+			<li ng-click="collectionToggle()" ng-class="{'empty': collection.length == 0}" ui-sref-active="active">Collection ({{collection.length}})</li>
+		</ul>
+	</div>
+
+</nav>

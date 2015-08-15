@@ -1,0 +1,38 @@
+#app-frame {
+	width: 43vw;
+	height: 100vh;
+	float: right;
+	background-color: white;
+	overflow: scroll;
+	padding-left: 1vh;
+	padding-right: 1vh;
+}
+
+.app-content {
+	padding-top: 15vh;
+	h1 {
+		width: 80%;
+	}
+}
+
+.large-vertical-space {
+	padding-top: 13vh;
+}
+
+.very-large-vertical-space {
+	padding-top: 22vh;
+}
+
+#top {
+	width: 100%;
+	position: fixed;
+	top: 0;
+}
+
+.center {
+	text-align: center;
+}
+
+.container {
+	// padding: 5vh 5vw 5vh 5vw;
+}

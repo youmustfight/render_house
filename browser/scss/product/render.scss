@@ -1,0 +1,15 @@
+#render-frame {
+	width: 55vw;
+	height: 100vh;
+	float: left;
+}
+
+.creator {
+	bottom: 5vh;
+	left: 5vw;
+	position: absolute;
+
+	padding: .5em;
+	background-color: $primary-white;
+	color: $primary-light-gray;
+}
