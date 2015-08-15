@@ -17,7 +17,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req,res,next){
-		console.log(req.body)
 		User.create(req.body).then(function(user){
 			res.status(201).json(user);
 		})
@@ -32,7 +31,16 @@ router.put('/', function (req, res, next){
 				console.log('error is',err)
 			})
 			
+});
+
+router.put('/admin',function (req,res,next){
+	User.findOneAndUpdate({_id: req.body._id}, {admin: req.body.admin, reset: req.body.reset},{new: true})
+	.exec()
+	.then(function (user){
+		res.json(user)
+	},next)
 })
+
 
 router.delete('/:userId',function (req,res,next){
 	console.log("about to delete user", req.params.userId)

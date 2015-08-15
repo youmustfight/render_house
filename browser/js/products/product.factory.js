@@ -15,8 +15,4 @@ app.factory('Product', function ($http){
         }
 	}
 
-
-
-
-
 })

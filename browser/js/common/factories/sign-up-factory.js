@@ -3,6 +3,7 @@ app.factory('SignUp', function ($http, $state, $location) {
 	return{
 		signup: function (credentials) {
 		return $http.post('api/user', credentials).then(function (res) {
+			console.log(res.data)
 			return res.data;
 		});
 		},
