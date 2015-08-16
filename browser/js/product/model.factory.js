@@ -1,19 +1,10 @@
 'use strict';
 
-app.factory('Model', function($http){
-
-	// Currently Rendered Object
-	var renderObj = {
-		modelFileUrl: 'models/untitled-scene/untitled-scene.json',
-		creator: 'Mary Anne'
-	};
-
-
+app.factory('Model', function ($http) {
 	// Model Constructor
 	function Model (props) {
 		angular.extend(this, props);
-	};
-
+	}
 	Model.url = 'api/product'
 	Object.defineProperty(Model.prototype, 'url', {
 		get: function () {
@@ -21,6 +12,11 @@ app.factory('Model', function($http){
 		}
 	});
 
+	// Currently Rendered Object
+	var renderObj = {
+		modelFileUrl: 'models/untitled-scene/untitled-scene.json',
+		creator: 'Mary Anne'
+	};
 
 	// Listing Functionality
 	Model.prototype.fetch = function(){
@@ -35,12 +31,11 @@ app.factory('Model', function($http){
 		// 		return new Model(obj);
 		// 	});
 		// });
-		console.log();
 		return [
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -48,7 +43,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -56,7 +51,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -64,7 +59,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -72,7 +67,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -80,7 +75,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -88,7 +83,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -96,7 +91,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -104,7 +99,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -112,7 +107,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -120,7 +115,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -128,7 +123,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -136,7 +131,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -144,7 +139,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -152,7 +147,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -160,7 +155,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -168,7 +163,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -176,7 +171,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -184,7 +179,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -192,7 +187,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -200,7 +195,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -208,7 +203,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -216,7 +211,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -224,7 +219,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -232,7 +227,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12424,
 			title: 'Floating Island',
-			snapshotFileUrl: '/images/snapshots/floatingIsland.png',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
 			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
 			creator: 'Mary Anne',
 			tags: ['Environment','Low-Poly']
@@ -240,7 +235,7 @@ app.factory('Model', function($http){
 		{
 			_id: 12362,
 			title: 'Baymax',
-			snapshotFileUrl: '/images/snapshots/baymax.png',
+			snapshotFileUrl: 'images/snapshots/baymax.png',
 			modelFileUrl: 'models/baymax.json',
 			creator: 'Milton Glaser',
 			tags: ['Character','Futuristic']
@@ -254,12 +249,16 @@ app.factory('Model', function($http){
 		renderObj.modelFileUrl = newUrl;
 		return renderObj;
 	};
-	Model.changeModel = function () {
+	Model.changeModel = function (newObj) {
 		// Temp attributes for testing
-		renderObj = {
-			modelFileUrl: 'models/baymax.json',
-			creator: 'Milton Glaser'
-		}
+		renderObj = newObj || {
+			_id: 12424,
+			title: 'Floating Island',
+			snapshotFileUrl: 'images/snapshots/untitled-scene.png',
+			modelFileUrl: 'models/untitled-scene/untitled-scene.json',
+			creator: 'Mary Anne',
+			tags: ['Environment','Low-Poly']
+		};
 	};
 	Model.getModelUrl = function () {
 		return renderObj.modelFileUrl;

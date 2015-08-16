@@ -1,0 +1,23 @@
+<h1 class="large-vertical-space">{{model.title}}</h1>
+<h5 ui-sref="user({displayName:'MiltonGlaser'})">Made by {{model.creator}}</h5>
+<br>
+<button ng-click="">Download</button><button>Tip the Creator</button>
+
+<br><br>
+<p>{{model.description}} In the meantime, this will do for a description.</p>
+<br><br>
+<br><br>
+<br><br>
+<h5>Users Also Liked</h5>
+
+<recengine></recengine>
+<div class="container">
+	<ul>
+		<li ng-repeat="model in models | limitTo : 3" >
+			<product-tile class="render-tile" model="model"></product-tile>
+		</li>
+	</ul>
+</div>
+
+
+
