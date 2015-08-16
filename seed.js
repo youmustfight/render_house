@@ -57,6 +57,7 @@ var seedProduct= function(){
        freeOption: Math.random() < .5,
        owner: chance.name(),
        timesDownloaded: chance.integer({max:20}),
+       webRenderScale: .028
        // comments: [{type: mongoose.Schema.Types.ObjectId, ref:"UserComments"}]
    })
 }
