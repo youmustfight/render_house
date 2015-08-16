@@ -1,7 +1,5 @@
 'use strict';
 
-app.controller('UserController', function ($scope){
-
-
-
+app.controller('UserController', function ($scope, user){
+	$scope.user = user;
 });
