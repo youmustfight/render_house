@@ -12,7 +12,7 @@ app.directive('searchOnEnter', function ($http, $state){
 					if (event.which === 13) {
 						scope.$apply(function(){
 							scope.searchOpened = false;
-							scope.$eval($state.go('search',{queryString: element.val()}));
+							scope.$eval($state.go('search',{query: dirtyQueryString}));
 						});
 
 						event.preventDefault();
