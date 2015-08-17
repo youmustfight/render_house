@@ -1,9 +1,12 @@
 <h1 class="large-vertical-space">Welcome Back!</h1>
 <h3>We missed your face.</h3>
+  <alert type="danger" ng-show="error">
+        {{ error }}
+    </alert>
 
-<form class="form join">
-	<input type="text" placeholder="E-mail" /><br>
-	<input type="text" placeholder="Password" /><br>
+<form class="form login" name="loginForm" ng-submit="sendLogin(login)">
+	<input type="text" ng-model='login.email' class ="form-control" placeholder="E-mail" /><br>
+	<input type="text" ng-model='login.password'class ="form-control" placeholder="Password" /><br>
 	<br>
-	<button>Sign In</button>
+	<button type="submit">Sign In</button>
 </form>

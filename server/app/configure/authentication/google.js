@@ -16,14 +16,20 @@ module.exports = function (app) {
     };
 
     var verifyCallback = function (accessToken, refreshToken, profile, done) {
-
+         console.log("hit")
         UserModel.findOne({ 'google.id': profile.id }).exec()
             .then(function (user) {
-
+                console.log("hit2")
                 if (user) {
                     return user;
-                } else {
+                } else { 
                     return UserModel.create({
+                        isAdmin: false,
+                        firstName: profile._json.given_name,
+                        lastName: profile._json.family_name,
+                        displayName: profile.displayName,
+                        email: profile._json.email,
+                        pictureUrl: profile._json.picture,
                         google: {
                             id: profile.id
                         }
@@ -46,7 +52,9 @@ module.exports = function (app) {
             'https://www.googleapis.com/auth/userinfo.profile',
             'https://www.googleapis.com/auth/userinfo.email'
         ]
-    }));
+    }), function(req, res, next){
+        res.redirect('/');
+    });
 
     app.get('/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/login' }),

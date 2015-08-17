@@ -4,33 +4,41 @@
     <alert type="danger" ng-show="error">
         {{ error }}
     </alert>
-
-    <div class="form-group">
+        <pre>{{signUp | json}}</pre>
+        <pre>{{signInForm | json}}</pre>
+    
+    <div class=class="form-group" ng-class="{ 'has-error' : !signInForm.firstName.$pristine }">
         <label for="firstName">First Name</label>
-        <input type="text" ng-model="signUp.firstName" class="form-control" id="firstName" placeholder="Enter first name">
+        <input type="text" ng-model="signUp.firstName" ng-class="{'submitted': !signInForm.firstName.$pristine}" name="firstName"class="form-control" id="firstName" placeholder="Enter first name">
+        <p ng-show="!signInForm.firstName.$pristine" class="submitted">You name is required.</p>
     </div>
-        <div class="form-group">
+   <div class="form-group">
         <label for="firstName">Last Name</label>
-        <input type="text" ng-model="signUp.lastName" class="form-control" id="lastName" placeholder="Enter last Name">
+        <input type="text" ng-model="signUp.lastName" required name="signInForm.lastName"class="form-control" id="lastName" placeholder="Enter last Name">
     </div>
         <div class="form-group">
         <label for="displayName">Display Name</label>
-        <input type="text" ng-model="signUp.displayName" class="form-control" id="distplayName" placeholder="Enter distplay name">
+        <input type="text" ng-model="signUp.displayName" required name="signInForm.displayName"class="form-control" id="distplayName" placeholder="Enter distplay name">
     </div>
         <div class="form-group">
         <label for="email">Phone Number</label>
-        <input type="text" ng-model="signUp.phone" class="form-control" id="phone" placeholder="Enter phone number">
+        <input type="text" ng-model="signUp.phone" name="signInForm.phone"class="form-control" id="phone" placeholder="Enter phone number">
     </div>
         <div class="form-group">
         <label for="email">Email address</label>
-        <input type="text" ng-model="signUp.email" class="form-control" id="email" placeholder="Enter email">
+        <input type="text" ng-class="{submitted:newEmployee.submitted}" required ng-model="signUp.email" name="signInForm.email"class="form-control" id="email" placeholder="Enter email">
     </div>
     <div class="form-group">
         <label for="sign-up-password">Password</label>
-        <input type="password" ng-model="signUp.password" class="form-control" id="sign-up-password" placeholder="Password">
+        <input type="password" ng-model="signUp.password" required name="signInForm.password" class="form-control" id="sign-up-password" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="sign-up-password">Repeat Password</label>
+        <input type="password" name="signInForm.repeatPassword" required class="form-control" id="sign-up-password" placeholder="Password">
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
+ <button type="submit" ng-click="getUsers()">Submit</button>
 	<div class="or buffer">
 		<div class="back-line"><span>OR</span></div>
 	</div>

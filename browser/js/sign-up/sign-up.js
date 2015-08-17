@@ -25,6 +25,15 @@ app.controller('SignUpCtrl', function ($scope, SignUp, $state) {
 
     };
     
+   $scope.submitForm = function() {
+
+			// check to make sure the form is completely valid
+			if ($scope.userForm.$valid) {
+				alert('our form is amazing');
+			}
+
+		};
+    
     $scope.getUsers = function(){
         SignUp.getUsers().then(function(users){
             console.log(users)
