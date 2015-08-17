@@ -3,11 +3,8 @@
 app.directive('ngWebgl', function () {
     return {
       restrict: 'A',
-      scope: {
-        model: '=modelFileUrl'
-      },
       controller: "RenderController",
-      link: function (scope, element, attr) {
+      link: function (scope, element, attribute) {
 
         // Setup selections
         scope.renderFrame = $('#render-frame');

@@ -7,8 +7,9 @@
 @import 'global/form';
 
 // Partials
-@import 'product/listing.scss';
-@import 'product/render.scss';
+@import 'product/listing';
+@import 'product/render';
+@import 'product/tile';
 @import 'components/navbar';
 @import 'components/collection';
 @import 'components/searchbar';
