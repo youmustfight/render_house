@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('RecEngineController', function($scope, RenderService){
+app.controller('RecEngineController', function($scope){
 
-	$scope.modelUrl = RenderService.getModelUrl();
+
 
 
 })
