@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ListingController', function($scope, models, Model) {
+app.controller('ListingController', function($scope, models, Model, AuthService) {
 
     $scope.changeModel = function() {
         console.log($scope.models);
@@ -8,14 +8,5 @@ app.controller('ListingController', function($scope, models, Model) {
     }
 
     $scope.models = models;
-
-    $scope.recsHome = function() {
-        console.log('this is recshome')
-
-    };
-
-    $scope.recsLogin = function() {
-        console.log('this is recslogin')
-    }
 
 });
