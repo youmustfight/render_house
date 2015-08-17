@@ -33,13 +33,13 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
             $scope.itemsHide = [
                 { label: 'Sign In', state: 'login', auth: true },
                 { label: 'Sign Up', state: 'signUp', auth: true },
-                { label: 'Cart', state: 'listing' },
+                { label: 'Cart', state: 'listing' }
                  ]
                  
             $scope.itemsShow = [
                 { label: 'Upload a Model', state: 'upload', auth: true },
                 { label: 'Members Only', state: 'membersOnly', auth: true },
-                { label: 'Cart', state: 'listing' },
+                { label: 'Cart', state: 'listing' }
                  ]
             
 
@@ -48,7 +48,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
             $scope.isLoggedIn = function () {
                 var signed = AuthService.isAuthenticated();
                 // console.log("signed in =" + signed)
-                console.log($scope.user)
                 $scope.loggedIn = AuthService.isAuthenticated();
                 return AuthService.isAuthenticated();
             };
@@ -61,7 +60,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
             };
             
             $scope.check = function(){
-                console.log($scope.loggedIn,"yeah")
+                console.log($scope.user)
             }
 
             var setUser = function () {
@@ -69,6 +68,8 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                     $scope.user = user;
                 });
             };
+            
+      
 
             var removeUser = function () {
                 $scope.user = null;

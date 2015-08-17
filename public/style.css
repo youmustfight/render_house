@@ -261,3 +261,9 @@ button:hover {
 .join {
   padding-top: 2em;
   width: 30vw; }
+
+alert {
+  color: red; }
+
+.submitted {
+  color: #f00; }
