@@ -31,7 +31,8 @@ var schema = new mongoose.Schema({
         id: String
     },
     google: {
-        id: String
+        id: String,
+        token: String,
     },
     pictureUrl: String,
     purchaseHistroy:[{type: mongoose.Schema.Types.ObjectId, ref:"Product", required:true}]

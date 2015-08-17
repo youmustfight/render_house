@@ -1,18 +1,15 @@
 'use strict';
 
-app.controller('ManagerController', function($scope, $timeout){
+app.controller('ManagerController', function($scope, $rootScope, $timeout){
 
 	// Navbar
-	$scope.navbarExpand = false;
+	// $scope.navbarExpand = false;
 	
 	// Collection Panel
 	$scope.collectionOpen = false;
-	$scope.collectionToggle = function(){
-		if (!$scope.collectionOpen) $scope.collectionOpen = true;
-		else {
-			$scope.collectionOpen = false;
-		}
-	}
+	
+	
+	$rootScope.$broadcast("collectionOpen", $scope.navbarExpand)
 
 	//Collapse All
 	$scope.collapseTop = function(){
@@ -23,6 +20,11 @@ app.controller('ManagerController', function($scope, $timeout){
 	}
 
 	// Actual collection
-	$scope.collection = []
+	$scope.collection = [];
+	
+
+	$scope.$on('collectionToggled', function (event, toggle) {
+		$scope.collectionOpen = toggle;
+	});
 
 });
