@@ -3,6 +3,12 @@
   <alert type="danger" ng-show="error">
         {{ error }}
     </alert>
+    <div class ="sign-in-with">Sign in with us or use one of the providers below</div>
+ <div class="oauthsignin-container">
+		<p class ="buffer"><oauth-button provider-name="Google"></oauth-button></p>
+		<p class ="buffer"><oauth-button provider-name="Facebook"></oauth-button></p>
+		<p class ="buffer"><oauth-button provider-name="GitHub"></oauth-button></p>
+</div>
 
 <form class="form login" name="loginForm" ng-submit="sendLogin(login)">
 	<input type="text" ng-model='login.email' class ="form-control" placeholder="E-mail" /><br>
@@ -10,3 +16,7 @@
 	<br>
 	<button type="submit">Sign In</button>
 </form>
+
+
+</div>    
+ 
