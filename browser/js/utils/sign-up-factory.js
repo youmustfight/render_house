@@ -12,7 +12,13 @@ app.factory('SignUp', function ($http, $state, $location) {
             return $http.get('api/user').then(function(response){
                 return response.data;
             })
-        }
+        },
+		update: function (credentials) {
+		return $http.put('api/user/update/', credentials).then(function (res) {
+			console.log(res.data)
+			return res.data;
+		});
+		},
 	}
 });
 
