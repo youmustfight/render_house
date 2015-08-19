@@ -1,51 +1,55 @@
 <div class="signin-container">
-<form id="sign-up-form" name="signInForm" ng-submit="sendSignUp(signUp)">
+
+<form id="sign-up-form" name="signInForm" ng-submit="signInForm.$valid && sendSignUp(signUp)">
 
     <alert type="danger" ng-show="error">
         {{ error }}
     </alert>
-        <!-- <pre>{{signUp | json}}</pre>
-        <pre>{{signInForm | json}}</pre> -->
+
+    <!--<pre>{{signUp | json}}</pre>
+    <pre>{{signInForm | json}}</pre>-->
     
     <div class="form-group" ng-class="{ 'has-error' : !signInForm.firstName.$pristine }">
-        <label for="firstName">First Name</label>
-        <input type="text" ng-model="signUp.firstName" ng-class="{'submitted': !signInForm.firstName.$pristine}" name="firstName"class="form-control" id="firstName" placeholder="Enter first name">
-        <p ng-show="!signInForm.firstName.$pristine" class="submitted">You name is required.</p>
+        <label for="firstName">First Name <span ng-show="signInForm.firstName.$invalid&&!signInForm.firstName.$pristine&&signInForm.$submitted" class="submitted">Your first name is too short.</span></label>
+        <input type="text" ng-model="signUp.firstName" required ng-minlength="2" ng-class="{'submitted': signInForm.firstName.$invalid&&!signInForm.firstName.$pristine&&signInForm.$submitted}" name="firstName"class="form-control" id="firstName" placeholder="Enter first name">
     </div>
    <div class="form-group">
-        <label for="firstName">Last Name</label>
-        <input type="text" ng-model="signUp.lastName" required name="signInForm.lastName"class="form-control" id="lastName" placeholder="Enter last Name">
+        <label for="lastName">Last Name <span ng-show="signInForm.lastName.$invalid&&!signInForm.lastName.$pristine&&signInForm.$submitted" class="submitted">Your last name is too short.</span></label>
+        <input type="text" ng-model="signUp.lastName" required ng-minlength="2" ng-class="{'submitted': signInForm.lastName.$invalid&&!signInForm.lastName.$pristine&&signInForm.$submitted}" name="lastName"class="form-control" id="lastName" placeholder="Enter last Name">
     </div>
         <div class="form-group">
         <label for="displayName">Display Name</label>
-        <input type="text" ng-model="signUp.displayName" required name="signInForm.displayName"class="form-control" id="distplayName" placeholder="Enter distplay name">
+        <input type="text" ng-model="signUp.displayName" required name="displayName"class="form-control" id="distplayName" placeholder="Enter distplay name">
     </div>
         <div class="form-group">
-        <label for="email">Phone Number</label>
-        <input type="text" ng-model="signUp.phone" name="signInForm.phone"class="form-control" id="phone" placeholder="Enter phone number">
+        <label for="email">Phone Number <span ng-show="signInForm.phone.$invalid&&!signInForm.phone.$pristine&&signInForm.$submitted" class="submitted">Your phone number must be ten digits with no spaces.</span></label>
+        <input type="text" ng-model="signUp.phone" ng-minlength="10" ng-maxlength="10" name="phone"class="form-control" ng-class="{'submitted': signInForm.phone.$invalid&&!signInForm.phone.$pristine&&signInForm.$submitted}" id="phone" placeholder="Enter format 5555555555">
     </div>
         <div class="form-group">
         <label for="email">Email address</label>
-        <input type="text" ng-class="{submitted:newEmployee.submitted}" required ng-model="signUp.email" name="signInForm.email"class="form-control" id="email" placeholder="Enter email">
+        <input type="text" ng-class="{submitted:signInForm.email.$invalid&&signUpFormemail.submitted}" required ng-model="signUp.email" name="email"class="form-control" id="email" placeholder="Enter email">
     </div>
     <div class="form-group">
         <label for="sign-up-password">Password</label>
-        <input type="password" ng-model="signUp.password" required name="signInForm.password" class="form-control" id="sign-up-password" placeholder="Password">
+        <input type="password" ng-model="signUp.password" ng-required name="pw1" class="form-control" id="pw1" placeholder="Password">
     </div>
     <div class="form-group">
-        <label for="sign-up-password">Repeat Password</label>
-        <input type="password" name="signInForm.repeatPassword" required class="form-control" id="sign-up-password" placeholder="Password">
+        <label for="sign-up-password">Repeat Password <span ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-show="signInForm.pw2.$dirty&&signInForm.pw2.$error.pwmatch" class="submitted">Passwords do not match</span></label>
+        <input type="password" name="pw2" ng-model="pw2" ng-required pw-check="pw1" class="form-control" id="pw2" placeholder="Password">
     </div>
+    <div class="msg-block" ng-show="signInForm.$error">
+  <span class="msg-error" ng-show="signInFormForm.pw2.$error.pwmatch">
+    Passwords don't match.
+  </span>
+</div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
- <button type="submit" ng-click="getUsers()">Get Users</button>
-	<div class="or buffer">
-		<div class="back-line"><span>OR</span></div>
-	</div>
-	<div class="buffer oauth">
-		<p><oauth-button provider-name="Google"></oauth-button></p>
-		<p><oauth-button provider-name="Twitter"></oauth-button></p>
-		<p><oauth-button provider-name="GitHub"></oauth-button></p>
-	</div>
+<!--<button type="submit" ng-click="getUsers()">Submit</button>-->
+<div class ="sign-in-with">Sign up with us or use one of the providers below</div>
+    <div class="oauthsignin-container">
+    	<p class ="buffer"><oauth-button provider-name="Google"></oauth-button></p>
+    	<p class ="buffer"><oauth-button provider-name="Facebook"></oauth-button></p>
+    	<p class ="buffer"><oauth-button provider-name="GitHub"></oauth-button></p>
+    </div>
 </div>    
  

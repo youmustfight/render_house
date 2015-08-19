@@ -69,10 +69,12 @@ router.put('/download', function (req, res, next){
 		});
 });
 
-router.put('/admin',function (req,res,next){
-	User.findOneAndUpdate({_id: req.body._id}, {admin: req.body.admin, reset: req.body.reset},{new: true})
+router.put('/update',function (req,res,next){
+	console.log(req.body)
+	User.findOneAndUpdate({_id: req.body._id}, req.body)
 	.exec()
 	.then(function (user){
+		console.log(user)
 		res.json(user)
 	}, next)
 })

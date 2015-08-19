@@ -1,0 +1,26 @@
+
+.profile-container{
+ display: flex;
+	justify-content: center;
+	text-align: center;
+	span{
+		width: 100%;
+	}
+	> * {
+		// width: 33%;
+	}
+	img{
+		max-height: 100px;
+		max-width: 100px;
+	}
+	.local {
+		max-width: 18em;
+		text-align: left;
+	}
+	.or {
+		max-width: 10em;
+	}
+
+	min-width: -webkit-min-content
+ 
+}

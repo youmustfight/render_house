@@ -3,7 +3,8 @@ app.config(function ($stateProvider) {
     $stateProvider.state('signUp', {
         url: '/signup',
         templateUrl: 'js/sign-up/sign-up.html',
-        controller: 'SignUpCtrl'
+        controller: 'SignUpCtrl',
+        link: 'pwCheck'
     });
 
 });
@@ -25,14 +26,6 @@ app.controller('SignUpCtrl', function ($scope, SignUp, $state) {
 
     };
     
-   $scope.submitForm = function() {
-
-			// check to make sure the form is completely valid
-			if ($scope.userForm.$valid) {
-				alert('our form is amazing');
-			}
-
-		};
     
     $scope.getUsers = function(){
         SignUp.getUsers().then(function(users){
@@ -41,4 +34,21 @@ app.controller('SignUpCtrl', function ($scope, SignUp, $state) {
     }
 
 });
+
+
+app.directive('pwCheck', [function () {
+    return {
+      require: 'ngModel',
+      link: function (scope, elem, attrs, ctrl) {
+        var firstPassword = '#' + attrs.pwCheck;
+        elem.add(firstPassword).on('keyup', function () {
+          scope.$apply(function () {
+            var v = elem.val()===$(firstPassword).val();
+            ctrl.$setValidity('pwmatch', v);
+          });
+        });
+      }
+    }
+  }]);
+
 

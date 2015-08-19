@@ -1,8 +1,17 @@
 'use strict';
 
-app.controller('RecEngineController', function($scope, RenderService){
+app.controller('RecEngineController', function($scope){
 
-	$scope.modelUrl = RenderService.getModelUrl();
+
+    $scope.recsHome = function() {
+        console.log('this is recshome')
+
+    };
+
+    $scope.recsLogin = function() {
+        console.log('this is listing', AuthService.isAuthenticated())
+    }
+
 
 
 })
