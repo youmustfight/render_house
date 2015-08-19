@@ -8,14 +8,19 @@ app.config(function ($stateProvider) {
 		resolve: {
 			query: function ($stateParams) {
 				var dirtySearch = $stateParams.query;
+				// Handle deliniators such as ','
 				console.log(dirtySearch);
 				return dirtySearch;
+			},
+			models: function (Model) {
+				return Model.fetchAll();
 			}
 		}
 	});
 });
 
 
-app.controller('SearchController', function ($scope, query){
+app.controller('SearchController', function ($scope, query, models){
 	$scope.query = query;
+	$scope.models  = models;
 });

@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
     isAdmin: {type: Boolean, default: false},
 	firstName: String,
 	lastName: String,
-	displayName:String,
+	displayName: {type: String, unique: true},
 	phone: String,
 	userBlurb: String,
     email: {
@@ -35,8 +35,17 @@ var schema = new mongoose.Schema({
         token: String,
     },
     pictureUrl: String,
-    purchaseHistroy:[{type: mongoose.Schema.Types.ObjectId, ref:"Product", required:true}]
+    purchaseHistory:[{type: mongoose.Schema.Types.ObjectId, ref:"Product"}],
+    myModels: [{type: mongoose.Schema.Types.ObjectId, ref:"Product"}]
+    //purchasedBy: [stripe tokens from user purchase sessions?]
 });
+
+// Virtuals
+schema.virtual('fullName')
+    .get(function() {
+        return this.firstName + " " + this.lastName;
+    });
+
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
 // are all used for local authentication security.

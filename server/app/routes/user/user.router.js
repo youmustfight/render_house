@@ -5,15 +5,34 @@ var User = mongoose.model('User');
 var Product = mongoose.model('Product')
 
 
+router.param('id', function (req, res, next, id) {
+	console.log('resolving for user')
+	User.findById(id).populate('myModels').populate('purchaseHistory').exec()
+		.then(function (user) {
+			if (!user) throw HttpError(404);
+			else {
+				req.user = user;
+				next();
+			}
+		})
+		.then(null, next);
+})
+
+
+
 /* GET user JSON object */
 router.get('/', function(req, res, next) {
-	console.log("hit")
   	User.find()
 	.sort([['email', 'ascending']])
 	.exec()
 	.then(function (users){
 		res.json(users)
-	},next)
+	}, next)
+});
+
+// Handle specific user get
+router.get('/:id', function (req, res, next) {
+		res.json(req.user);
 });
 
 router.post('/', function(req,res,next){
@@ -23,14 +42,31 @@ router.post('/', function(req,res,next){
 		.then(null,next);
 });
 
-router.put('/', function (req, res, next){
-		User.findOneAndUpdate({_id: req.body.user._id}, {$addToSet: {purchaseHistory: req.body.item }}).exec().then(function(user){	
-					res.send(user);
-			}, function(failure){
-			}).then(next, function(err){
-				console.log('error is',err)
-			})
-			
+// Add to myModels - utilize in upload post?
+
+router.put('/upload', function (req, res, next) {
+	// console.log(req.body);
+	User.findOneAndUpdate({_id: req.body.userId}, {$addToSet: {myModels: req.body.uploadId}}).exec()
+		.then(function (user){
+			res.json(user);
+		}, function(failure) {
+			console.log(failure);
+		});
+});
+
+
+// Add to Purchase History - utilize in download button?
+router.put('/download', function (req, res, next){
+	// Add to User Purchase History
+	User.findOneAndUpdate({_id: req.body.userId}, {$addToSet: {purchaseHistory: req.body.modelId }}).exec()
+		.then(function(user){	
+			res.json(user);
+		}, function(failure){
+			console.log(failure);
+		})
+		.then(next, function(err){
+			console.log('error is',err)
+		});
 });
 
 router.put('/admin',function (req,res,next){
@@ -38,7 +74,7 @@ router.put('/admin',function (req,res,next){
 	.exec()
 	.then(function (user){
 		res.json(user)
-	},next)
+	}, next)
 })
 
 
@@ -49,7 +85,7 @@ router.delete('/:userId',function (req,res,next){
 	.then(function (user){
 		console.log("user deleted")
 		res.json(user)
-	},next)
+	}, next)
 })
 
 

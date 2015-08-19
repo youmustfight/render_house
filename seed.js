@@ -42,6 +42,11 @@ function randPhoto () {
    return 'http://http://lorempixel.com/g/400/200/'
 }
 
+function randModel () {
+  var listOfModels = ['models/untitled-scene/untitled-scene.json','models/baymax.json','models/plane/plane.json'];
+  var numOfModels = listOfModels.length;
+  return listOfModels[Math.floor(Math.random()*numOfModels)]
+}
 
 
 var seedProduct= function(){
@@ -49,13 +54,13 @@ var seedProduct= function(){
        title: chance.name(),
        description: chance.paragraph({sentence:4}), // reeturns a rand paragraph with 4 sentences
        snapshotFileUrl: randPhoto(), //return the website lorempixel
-       highResFileUrl: "example high res file here",
+       modelFileUrl: randModel(),
        tags: generateTags(), // runs function above and assigns two types of tags to every instance
        license: chance.natural(), // generates a number between 0 to 9007199254740992
        formatsAvailable: "JSON", //hardcoded for now since we only have JSON object
        price: chance.integer({max:1000}), // generates 
        freeOption: Math.random() < .5,
-       owner: chance.name(),
+       creator: chance.name(),
        timesDownloaded: chance.integer({max:20}),
        webRenderScale: .028
        // comments: [{type: mongoose.Schema.Types.ObjectId, ref:"UserComments"}]

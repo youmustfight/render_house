@@ -1,2 +1,10 @@
-<h1>Results:</h1>
-<h3>{{query}}</h3>
+<!-- <h2>{{models.length || 0}} results for "{{query}}"</h2> -->
+<h2>Results for "{{query}}"</h2>
+
+<div class="container">
+	<ul>
+		<li ng-repeat="model in models | modelsSort: this" >
+			<product-tile class="render-tile" model="model"></product-tile>
+		</li>
+	</ul>
+</div>

@@ -4,10 +4,10 @@
     <alert type="danger" ng-show="error">
         {{ error }}
     </alert>
-        <pre>{{signUp | json}}</pre>
-        <pre>{{signInForm | json}}</pre>
+        <!-- <pre>{{signUp | json}}</pre>
+        <pre>{{signInForm | json}}</pre> -->
     
-    <div class=class="form-group" ng-class="{ 'has-error' : !signInForm.firstName.$pristine }">
+    <div class="form-group" ng-class="{ 'has-error' : !signInForm.firstName.$pristine }">
         <label for="firstName">First Name</label>
         <input type="text" ng-model="signUp.firstName" ng-class="{'submitted': !signInForm.firstName.$pristine}" name="firstName"class="form-control" id="firstName" placeholder="Enter first name">
         <p ng-show="!signInForm.firstName.$pristine" class="submitted">You name is required.</p>
@@ -38,7 +38,7 @@
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
- <button type="submit" ng-click="getUsers()">Submit</button>
+ <button type="submit" ng-click="getUsers()">Get Users</button>
 	<div class="or buffer">
 		<div class="back-line"><span>OR</span></div>
 	</div>
