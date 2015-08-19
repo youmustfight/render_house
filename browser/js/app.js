@@ -9,6 +9,7 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.when('/auth/:provider', function () {
     	window.location.reload();
 	});
+   
 
 });
 

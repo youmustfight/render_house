@@ -1,23 +1,31 @@
 'use strict';
 
-app.directive('recengine', function($rootScope, AuthService) {
-        return {
-            restrict: 'E',
-            replace: true,
-            templateUrl: 'js/components/recengine/recengine.html',
-            link: function(scope, element, attr) {
-                if (AuthService.getLoggedInUser() !== null) {
-                // $scope.recsLogin()
+app.directive('recengine', function(AuthService, Model) {
+    return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: 'js/components/recengine/recengine.html',
+        scope: {
+        	user: "@"
+        },
+        link: function(scope, element, attr) {
+            if (AuthService.isAuthenticated()) {
+              Model.fetchAll();
 
-                console.log('this is q', AuthService.isAuthenticated())
+                AuthService.getLoggedInUser().then(function(data) {
+                   
+                });
+
 
             } else {
-                // $scope.recsLogin();
-                console.log('this is auth service in dir'); AuthService.isAuthenticated().then(function(response){
-                	console.log(response.data)
+
+                AuthService.getLoggedInUser().then(function(data) {
+                    console.log('this is data', data)
                 })
+                 //console.log('this is scope', $scope.user);
+
+
             }
         }
     }
 })
-
