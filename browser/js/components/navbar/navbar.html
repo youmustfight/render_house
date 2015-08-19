@@ -14,6 +14,7 @@
                 {{ item.label }}
             </li>
 			<li ng-click="check()"> is logged in?</li>
+			<li ui-sref-active ="active" ui-sref="myprofile" ng-if="loggedIn">my profile</li>
 			<li ng-click="logout()"ng-if="loggedIn">logout</li>
 			<li ng-click="collectionToggle()" ng-class="{'empty': collection.length == 0}" ui-sref-active="active">Collection ({{collection.length}})</li>
 		</ul>
