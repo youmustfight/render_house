@@ -1,3 +1,9 @@
 <div class="collection" ng-class="{'collection-open': collectionOpen}" ng-mouseover="navbarExpand = true" ng-mouseleave="collapseTop()">
+	
+<ul>
+	<li ng-repeat="model in user.purchaseHistory | limitTo : 3" >
+		<product-tile class="render-tile" model="model"></product-tile>
+	</li>
+</ul>
 
 </div>

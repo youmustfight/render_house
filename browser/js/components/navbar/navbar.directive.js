@@ -32,14 +32,12 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
             
             $scope.itemsHide = [
                 { label: 'Sign In', state: 'login', auth: true },
-                { label: 'Sign Up', state: 'signUp', auth: true },
-                { label: 'Cart', state: 'listing' }
+                { label: 'Sign Up', state: 'signUp', auth: true }
                  ]
                  
             $scope.itemsShow = [
-                { label: 'Upload a Model', state: 'upload', auth: true },
-                { label: 'Members Only', state: 'membersOnly', auth: true },
-                { label: 'Cart', state: 'listing' }
+                { label: 'Upload a Model', state: 'upload', auth: true }
+                // { label: 'Members Only', state: 'membersOnly', auth: true }
                  ]
             
 

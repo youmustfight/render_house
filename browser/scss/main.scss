@@ -7,6 +7,7 @@
 @import 'global/form';
 
 // Partials
+@import 'product/detail';
 @import 'product/listing';
 @import 'product/render';
 @import 'product/tile';
@@ -14,6 +15,5 @@
 @import 'components/collection';
 @import 'components/searchbar';
 @import 'join/join';
-// @import 'product/product.detail.scss';
 @import 'sign-in/sign-in';
 @import 'my-profile/my-profile';

@@ -6,25 +6,12 @@ app.config(function ($stateProvider) {
 		templateUrl: 'js/product/detail/product.detail.html',
 		controller: 'ModelDetailController',
 		resolve: {
-			model: function (Model, $stateParams) {
-				// Get Model
-				// var model = new Model({_id: $statemParams.id}).fetch();
-				var model = {
-					_id: 12362,
-					title: 'Baymax',
-					snapshotFileUrl: '/images/snapshots/baymax.png',
-					modelFileUrl: 'models/baymax.json',
-					creator: 'Milton Glaser',
-					tags: ['Character','Futuristic']
-				};
-
-				// Set new renderObj
-				Model.changeModel(model);
-
-				// Attach returned model to scope
-				return model;
+			model: function (Model, $stateParams, $http) {
+				var model = new Model({_id: $stateParams.id});
+				return model.fetch();
 			},
 			models: function (Model) {
+				// "Users Also Download" recommendation
 				return Model.fetchAll();
 			}
 		}				
