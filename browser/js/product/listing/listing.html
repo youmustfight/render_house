@@ -6,10 +6,8 @@
 <hr />
 <div class="container">
 	<ul>
-		<li ng-repeat="model in models" >
+		<li ng-repeat=" model in models | orderBy: '-dateCreated' " >
 			<product-tile class="render-tile" model="model"></product-tile>
 		</li>
 	</ul>
 </div>
-
-<recengine></recengine>

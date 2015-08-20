@@ -1,3 +1,11 @@
+body {
+	cursor: pointer;
+} 
+
+::-webkit-scrollbar {
+	display: none;
+}
+
 #app-frame {
 	width: 43vw;
 	height: 100vh;
@@ -13,6 +21,10 @@
 	h1 {
 		width: 80%;
 	}
+}
+
+.vertical-space {
+	padding-top: 8vh;
 }
 
 .large-vertical-space {
@@ -35,4 +47,9 @@
 
 .container {
 	float: left;
+	width: 100%;
+}
+
+.inline {
+	display: inline;
 }

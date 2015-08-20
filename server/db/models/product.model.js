@@ -6,7 +6,7 @@ var Product = new mongoose.Schema({
 	description: {type: String, max: 300},
 	snapshotFileUrl: {type:String},
 	modelFileUrl: {type:String},
-	tags: {type:String},
+	tags: [{type:String}],
 	license: String,
 	formatsAvailable: {type:String},
 	price: Number,

@@ -3,12 +3,42 @@
 	width: 100%;
 	transition: .2s;
 	position: relative;
-	height: 0em;
 	overflow-y: hidden;
-	
+	overflow-x: scroll;
+	height: 0em;
 	background-color: lighten($primary-black, 4%);
+
+	ul {
+		overflow-y: hidden;
+		overflow-x: scroll;
+		display: inline-flex;
+	}
+
+	.render-tile {
+		height: 16vh;
+		width: 16vh;
+		margin-left: 1vw;
+		margin-right: 1vw;
+		margin-top: 2vh;
+		background-color: white;
+		padding: 2vh;
+		text-align: center;
+		opacity: .2;
+		transition: .2s;
+
+		img {
+			height: 80%;
+			width: auto;
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
 }
 
 .collection-open {
-		height: 12em;
+		height: 24vh;
 }
+
