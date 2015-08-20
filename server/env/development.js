@@ -14,6 +14,6 @@ module.exports = {
   "GOOGLE": {
     "clientID": "353800858718-9fhlssuleqd3m8ede7eu8lsjahc48ovp.apps.googleusercontent.com",
     "clientSecret": "6banHHSWNzn8lrdLX5mItu95",
-    "callbackURL": "http://localhost:1337/auth/google/callback"
+    "callbackURL": "http://renderhouse.io/auth/google/callback"
   }
 };
