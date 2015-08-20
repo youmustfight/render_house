@@ -14,6 +14,8 @@
                 {{ item.label }}
             </li>
 			<li ui-sref-active ="active" ui-sref="myprofile" ng-if="loggedIn">my profile</li>
+			<li ui-sref-active ="active" ui-sref="admin" ng-if="user.isAdmin">ADMIN PAGE</li>
+			<li  ng-click='check()' ng-if='loggedIn'>the user</li>
 			<li ng-click="logout()"ng-if="loggedIn">logout</li>
 			<li ng-click="collectionToggle()" ng-class="{'empty': user.purchaseHistory.length == 0}" ui-sref-active="active">Collection ({{user.purchaseHistory.length || 0}})</li>
 		</ul>

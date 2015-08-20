@@ -14,6 +14,7 @@ var db = mongoose.connect(DATABASE_URI).connection;
 require('./models/cart.model');
 require('./models/product.model');
 require('./models/user.model');
+require('./models/admin.model');
 
 var startDbPromise = new Promise(function (resolve, reject) {
     db.on('open', resolve);

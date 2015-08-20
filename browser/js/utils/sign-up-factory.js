@@ -19,6 +19,12 @@ app.factory('SignUp', function ($http, $state, $location) {
 			return res.data;
 		});
 		},
+		deleteUser: function(creds){
+			return $http.delete('api/user/'+ creds).then(function(res){
+				console.log("this user is gone" + res.data)
+				return res.data;
+			})
+		}
 	}
 });
 
