@@ -18,8 +18,6 @@ router.param('id', function (req, res, next, id) {
 		.then(null, next);
 })
 
-
-
 /* GET user JSON object */
 router.get('/', function(req, res, next) {
   	User.find()

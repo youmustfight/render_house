@@ -1,10 +1,7 @@
-<nav class="navbar" ng-class="{'navbar-expanded': navbarExpand}" ng-mouseover="navbarExpand = true" ng-mouseleave="navbarExpand = false">
-	
+<nav class="navbar" ng-class="{'navbar-expanded': navbarExpand}" ng-mouseover="navbarExpand = true" ng-mouseleave="navbarExpand = false">	
 	<span ng-if="!navbarExpand && !loggedIn"><h5 class="center">RENDERHOUSE</h5></span>
-	<span ng-if="!navbarExpand && loggedIn" class ="center"><h5>Hey {{user.firstName}}y-{{user.firstName}}</h5></span>
+	<span ng-if="!navbarExpand && loggedIn" class ="center"><h5>Hello {{user.displayName}}</h5></span>
 	<span ng-if="navbarExpand" ui-sref="listing"><h4>RENDERHOUSE</h4></span>
-
-
 	<div class="navigation" ng-show="navbarExpand">
 		<ul>
             <li ng-repeat="item in itemsShow" ng-show="!item.auth || isLoggedIn()"ui-sref-active="active" ui-sref="{{ item.state }}">
@@ -18,5 +15,12 @@
 			<li ng-click="collectionToggle()" ng-class="{'empty': user.purchaseHistory.length == 0}" ui-sref-active="active">Collection ({{user.purchaseHistory.length || 0}})</li>
 		</ul>
 	</div>
-
 </nav>
+
+<div class="collection" ng-class="{'collection-open': collectionOpen}" ng-mouseover="navbarExpand = true" ng-mouseleave="collapseTop()">
+	<ul>
+		<li ng-repeat="model in user.purchaseHistory" >
+			<product-tile class="render-tile" model="model" ng-click="collapseTop()"></product-tile>
+		</li>
+	</ul>
+</div>

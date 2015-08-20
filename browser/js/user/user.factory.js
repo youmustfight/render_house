@@ -17,7 +17,7 @@ app.factory('User', function ($http) {
 	User.prototype.fetch = function () {
 		return $http.get(this.url)
 			.then(function (res) {
-				console.log("Res.data: ", res.data);
+				// console.log("Res.data: ", res.data);
 				return new User(res.data);
 			});
 	}
