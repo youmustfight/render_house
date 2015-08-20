@@ -39,6 +39,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
                  ]
 
             $scope.user = null;
+    
 
             $scope.isLoggedIn = function () {
                 // var signed = AuthService.isAuthenticated();
