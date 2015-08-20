@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ListingController', function($scope, models, Model, AuthService) {
+app.controller('ListingController', function($scope, models, Model, AuthService, RecEng) {
 
     $scope.changeModel = function() {
         console.log($scope.models);

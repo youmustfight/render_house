@@ -1,6 +1,7 @@
 'use strict';
 
-app.directive('recengine', function(AuthService, Model) {
+
+app.directive('recengine', function(AuthService, Model, RecEng) {
     return {
         restrict: 'E',
         replace: true,
@@ -8,24 +9,6 @@ app.directive('recengine', function(AuthService, Model) {
         scope: {
         	user: "@"
         },
-        link: function(scope, element, attr) {
-            if (AuthService.isAuthenticated()) {
-              Model.fetchAll();
-
-                AuthService.getLoggedInUser().then(function(data) {
-                   
-                });
-
-
-            } else {
-
-                AuthService.getLoggedInUser().then(function(data) {
-                    console.log('this is data', data)
-                })
-                 //console.log('this is scope', $scope.user);
-
-
-            }
-        }
+       	controller: 'RecEngineController'
     }
 })
