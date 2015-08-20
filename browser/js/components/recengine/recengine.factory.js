@@ -1,18 +1,20 @@
 'use strict';
 
-app.factory('RecEngineEngine', function(){
+app.factory('RecEng', function(){
 
-function RecEngine (props) {
+function RecEng (props) {
 		angular.extend(this, props);
 	}
-	RecEngine.url = 'api/recommendation'
-	Object.defineProperty(RecEngine.prototype, 'url', {
+	RecEng.url = 'api/recommendation'
+	Object.defineProperty(RecEng.prototype, 'url', {
 		get: function () {
-			return RecEngine.url + this._id;
+			return RecEng.url + this._id;
 		}
 	});
 
-
+RecEng.prototype.test = function(){
+	alert('got here!')
+}
 
 	// Currently Rendered Object
 	var renderObj = {
@@ -21,27 +23,27 @@ function RecEngine (props) {
 	};
 
 	// Listing Functionality
-	RecEngine.prototype.fetch = function(){
+	RecEng.prototype.fetch = function(){
 		return $http.get(this.url).then(function (res) {
-			return new RecEngine(res.data);
+			return new RecEng(res.data);
 		});
 	}
 
-	RecEngine.fetchAll = function(){
-		return $htpp.get(RecEngine.url).then(function (data) {
+	RecEng.fetchAll = function(){
+		return $htpp.get(RecEng.url).then(function (data) {
 			return res.data.map(function (obj) {
-				return new RecEngine(obj);
+				return new RecEng(obj);
 			});
 		});
 		
 	}
 
 	// Renderer Functionality
-	RecEngine.changeRecUrl = function (newUrl) {
+	RecEng.changeRecUrl = function (newUrl) {
 		renderObj.modelFileUrl = newUrl;
 		return renderObj;
 	};
-	RecEngine.changeRec = function (newObj) {
+	RecEng.changeRec = function (newObj) {
 		// Temp attributes for testing
 		renderObj = newObj || {
 			_id: 12424,
@@ -52,16 +54,16 @@ function RecEngine (props) {
 			tags: ['Environment','Low-Poly']
 		};
 	};
-	RecEngine.getRecUrl = function () {
+	RecEng.getRecUrl = function () {
 		return renderObj.modelFileUrl;
 	};
-	RecEngine.getRec = function () {
+	RecEng.getRec = function () {
 		return renderObj;
 	};
 
 
 
-	return RecEngine;
+	return RecEng;
 
 
 
