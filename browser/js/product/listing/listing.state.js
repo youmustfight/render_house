@@ -8,7 +8,21 @@ app.config( function ($stateProvider) {
 		controller: 'ListingController',
 		resolve: {
 			models: function (Model, $http) {
-				return Model.fetchAll();
+				// var models = Model.fetchAll();
+				// console.log(models)
+				// Model.changeModel(models[0]);
+				// return models;
+
+				return $http.get('/api/product/')
+						.then(function (res) {
+							var mappedResponse = res.data.map(function (obj){
+								return new Model(obj);
+							});
+							// console.log(mappedResponse[0]);
+							Model.changeModel(mappedResponse[0])
+							return mappedResponse;
+						});
+
 			}
 		}
 	});

@@ -1,4 +1,6 @@
-<h1 class="large-vertical-space">{{model.title}}</h1>
+<h1 class="vertical-space">{{model.title}}</h1>
+<h4 class="inline">TAGS:</h4> <h4 ng-repeat="tag in model.tags" class="inline">{{tag}}</h4>
+<br>
 <br>
 <h5 ui-sref="user({id: model.creator._id})">Made by {{model.creator.firstName}} {{model.creator.lastName}}  ---  Downloaded {{model.timesDownloaded}} Times</h5>
 <br>
@@ -17,19 +19,18 @@
 	<hr />
 	<h5>Users Also Download</h5>
 
-	<!-- <recengine></recengine> -->
-
-
 	<div class="container">
 		<ul>
-			<li ng-repeat="model in models | limitTo : 3" >
+			<li ng-repeat="model in models | orderBy: '-dateCreated'  | limitTo : 3" >
 				<product-tile class="render-tile" model="model"></product-tile>
 			</li>
 		</ul>
 	</div>
 </div>
 
-<!-- 
+
+<!-- STRIPE -->
+
 <div ng-show="paymentProcess == 'tip'">
 	<form>
 		<input type="number" placeholder="How much to tip?"/>
@@ -73,4 +74,4 @@
 
 <div ng-show="paymentProcess == 'thanks'">
 
-</div> -->
+</div>

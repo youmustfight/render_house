@@ -23,4 +23,5 @@ button {
 button:hover {
 	color: $primary-white;
 	background-color: lighten($primary-black, 10%);
+	cursor: pointer;
 }

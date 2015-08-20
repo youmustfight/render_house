@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UploadController', function (User, $scope, $http, AuthService){
+app.controller('UploadController', function (User, $scope, $http, AuthService, $state){
 
 	$scope.newProduct = null;
 
@@ -13,33 +13,36 @@ app.controller('UploadController', function (User, $scope, $http, AuthService){
 	User();
 
 	$scope.uploadModel = function (uploaded) {
-		function randModel () {
-			var listOfModels = ['models/untitled-scene/untitled-scene.json','models/baymax.json','models/plane/plane.json'];
+
+		var randModel = function () {
+			var listOfModels = ['models/untitled-scene/untitled-scene.json','models/baymax.json'];
+			var listOfModelPics = ['/images/snapshots/untitled-scene.png','/images/snapshots/baymax.png'];
 			var numOfModels = listOfModels.length;
-			return listOfModels[Math.floor(Math.random()*numOfModels)]
+			var pick = Math.floor(Math.random()*numOfModels);
+			return {
+				model: listOfModels[pick],
+				pic: listOfModelPics[pick]
+			}
 		}
-		function randPhoto () {
-			var listOfModels = ['/images/snapshots/untitled-scene.png','/images/snapshots/baymax.png'];
-			var numOfModels = listOfModels.length;
-			return listOfModels[Math.floor(Math.random()*numOfModels)]
-		}
-		uploaded.snapshotFileUrl = randPhoto();
-		uploaded.modelFileUrl = randModel();
+		var thisPick = randModel();
+		console.log(thisPick);
+
+		uploaded.snapshotFileUrl = thisPick.pic;
+		uploaded.modelFileUrl = thisPick.model;
 		uploaded.tags = uploaded.tags.split(",");
 		uploaded.creator = $scope.user._id;
 
+		// Post Model
 		console.log("File to post", uploaded);
 
 		$http.post('/api/product/upload', uploaded)
 			.then(function (response){
 				console.log("Success: ", response);
-				$http.put('/api/user/upload', {userId: $scope.user._id, uploadId: response.data._id})
+				$http.put('/api/user/upload', {userId: $scope.user._id, uploadId: response.data._id});
+				$state.go('model', {id: response.data._id});
 			}, function (response) {
 				console.log("Failed: ", response);
 			});
-		
-		// Add to User Uploads
-		// $http.put('/api/user', uploaded)?
 	}
 
 });

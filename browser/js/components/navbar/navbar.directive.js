@@ -1,35 +1,33 @@
 'use strict';
 
-// app.directive('navbar', function () {
-// 	return {
-// 		restrict: "E",
-// 		templateUrl: "js/components/navbar/navbar.html",
-// 		controller: 'ManagerController'
-// 	}
-// });
-
-
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, $http) {
 
     return {
         restrict: 'E',
         scope: {},
         templateUrl: 'js/components/navbar/navbar.html',
         controller: function ($scope, $timeout) {
-            
+
+            $scope.collapseTop = function(){
+                $scope.collectionOpen = false;
+                $timeout(function(){
+                    $scope.navbarExpand = false;
+                }, 200);
+            }
+
         	// Collection Panel
         	$scope.collectionOpen = false;
         	$scope.collectionToggle = function () {
                 $scope.collectionOpen = !$scope.collectionOpen;
-                $rootScope.$broadcast("collectionToggled", $scope.collectionOpen)
+                $rootScope.$broadcast("collectionToggled", $scope.collectionOpen);
         	}
-            $scope.collection = [];
             
             $scope.$on('collectionOpen', function(event, expanded){
                 $scope.navbarExpand = expanded;
             })
             $scope.loggedIn = false;
             
+            // Navigation
             $scope.itemsHide = [
                 { label: 'Sign In', state: 'login', auth: true },
                 { label: 'Sign Up', state: 'signUp', auth: true }
@@ -39,7 +37,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 { label: 'Upload a Model', state: 'upload', auth: true }
                 // { label: 'Members Only', state: 'membersOnly', auth: true }
                  ]
-            
 
             $scope.user = null;
     
@@ -65,11 +62,15 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
             var setUser = function () {
                 AuthService.getLoggedInUser().then(function (user) {
                     $scope.user = user;
+                    var userUrl = '/api/user/' + $scope.user._id;
+                    $http.get(userUrl)
+                        .then(function (res){
+                            // console.log('res data', res.data.purchaseHistory)
+                            $scope.user.purchaseHistory = res.data.purchaseHistory;
+                    });
                 });
             };
             
-      
-
             var removeUser = function () {
                 $scope.user = null;
             };

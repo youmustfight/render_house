@@ -34,7 +34,7 @@
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/jquery/dist/jquery.min.js"></script>
-    <script src="/three/three.min.js"></script>
+    <script src="/three/three.js"></script>
     
     <script src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">Stripe.setPublishableKey('pk_test_VkKexfv4jBUoiY6BmfbOpxT0');</script>
@@ -45,13 +45,13 @@
     
     <div id="top">
         <navbar></navbar>
-        <collection></collection>
         <searchbar></searchbar>
     </div>
 
-    <!--<div ng-webgl id="render-frame">
-        <div class="creator" ng-controller="RenderController"><h5 ui-sref="user({id: model.creator._id})">Model made by {{model.creator.firstName}} {{model.creator.lastName}}</h5></div>
-    </div>-->
+
+    <div ng-webgl id="render-frame">
+        <div class="creator" ng-controller="RenderController" ng-show="model.creator"><h5 ui-sref="user({id: model.creator._id})">Made by {{model.creator.firstName}} {{model.creator.lastName}}</h5></div>
+    </div>
 
     <div id="app-frame">
         <div ui-view class="app-content"></div>

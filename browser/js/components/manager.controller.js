@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ManagerController', function($scope, $rootScope, AuthService, $timeout){
+app.controller('ManagerController', function ($scope, $rootScope, AuthService, $timeout, User, $http){
 
 	// Navbar
 	// $scope.navbarExpand = false;
@@ -26,10 +26,25 @@ app.controller('ManagerController', function($scope, $rootScope, AuthService, $t
 			$scope.user = user;
 		});
 	}
-	
 	User();
 	
+	$scope.$watch('collectionOpen', function (newValue, oldValue){
+		if (newValue == true) {
+			populateUserHistory();
 
+		}
+    });
+
+    // Populate user models
+	var populateUserHistory = function (){
+	    var userUrl = '/api/user/' + $scope.user._id;
+	    $http.get(userUrl)
+	        .then(function (res){
+	            console.log(res.data.purchaseHistory);
+	            $scope.user.purchaseHistory = res.data.purchaseHistory;
+        });
+	}
+	
 
 	$scope.$on('collectionToggled', function (event, toggle) {
 		$scope.collectionOpen = toggle;
