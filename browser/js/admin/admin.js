@@ -55,7 +55,8 @@ app.controller('AdminCtrl', function ($scope, SignUp, allUsers, AuthService, adm
        
        $scope.deleteUser = function(userid){
                SignUp.deleteUser(userid).then(function () {
-               $state.go('admin')
+                         $("."+userid).remove();
+               // $state.go('admin')
         }).catch(function () {
             $scope.error = 'Invalid login credentials.';
         });
