@@ -16,14 +16,26 @@ h5.product-tile-creator {
 
 
 .render-tile {
+	border: 1px solid $primary-light-gray;
 	float: left;
 	height: 20vh;
 	width: 20vh;
-	margin-left: 1vw;
+	margin-right: 1vw;
 	margin-top: 1vh;
 	background-color: white;
 	padding: 1vh;
-	text-align: center;
+	text-align: left;
+	opacity: .6;
+	transition: .2s;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	h2 {
+		border-top: 1px solid $primary-light-gray;
+		padding-top: 6px;
+	}
 
 	img {
 		height: 80%;
