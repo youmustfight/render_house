@@ -1,3 +1,21 @@
 #payment-form {
 	width:70%;
 }
+
+[class*="product-state-"] {
+	h5 {
+		margin-top: 2vh;
+		margin-bottom: 1vh;
+	}
+	label {
+		@extend h5;
+	}
+	p {
+		margin-top: 3vh;
+		margin-bottom: 4vh;
+	}
+	.delete {
+		background-color: red;
+	}
+}
+

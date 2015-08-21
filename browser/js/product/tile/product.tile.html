@@ -1,5 +1,5 @@
-<img ui-sref="model({id: model._id})" src="{{model.snapshotFileUrl}}" />
-<h2 ui-sref="model({id: model._id})">{{model.title}}</h2>
+<img ui-sref="model.detail({id: model._id})" src="{{model.snapshotFileUrl}}" />
+<h2 ui-sref="model.detail({id: model._id})">{{model.title}}</h2>
 <h5 ui-sref="user({id: model.creator._id})" class="product-tile-creator" ng-show="model.creator.firstName">By {{model.creator.firstName}} {{model.creator.lastName}}</h5>
 <!-- <ul class="tags">
 	<li ng-repeat="tag in model.tags" class="tag" ui-sref="search({query:tag})">{{tag}}</li>

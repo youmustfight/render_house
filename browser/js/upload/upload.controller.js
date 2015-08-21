@@ -39,7 +39,7 @@ app.controller('UploadController', function (User, $scope, $http, AuthService, $
 			.then(function (response){
 				console.log("Success: ", response);
 				$http.put('/api/user/upload', {userId: $scope.user._id, uploadId: response.data._id});
-				$state.go('model', {id: response.data._id});
+				$state.go('model.detail', {id: response.data._id});
 			}, function (response) {
 				console.log("Failed: ", response);
 			});
