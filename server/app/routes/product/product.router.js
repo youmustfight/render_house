@@ -51,11 +51,22 @@ router.put('/download', function (req, res, next) {
 			});
 });
 
-// router.put('/',function (req,res,next){
-// 	Product.findOneAndUpdate({_id: req.body._id}, req.body, {upsert: true, new: true},function(err,product){
-// 		if(err) return next(err)
-// 		res.json(product)
-// 	})
-// })
+// Update a Product
+router.put('/', function (req,res,next){
+	Product.findOneAndUpdate({_id: req.body._id}, req.body, {upsert: true, new: true},function(err,product){
+		if(err) return next(err)
+		res.json(product)
+	})
+});
+
+
+// Delete a Product
+router.delete('/', function (req, res, next) {
+	Product.findById(req.body._id, function (err, doc) {
+		doc.remove();
+	});
+})
+
+
 
 module.exports = router;
