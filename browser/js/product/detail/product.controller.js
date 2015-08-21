@@ -22,7 +22,9 @@ app.controller('ModelController', function ($scope, AuthService, Model, model, m
 		}
 		if (!modelPurchased) {
 			$http.put('/api/user/download', {userId: $scope.user._id, modelId: $scope.model._id})
-				.then(function (successResponse){ console.log(successResponse);
+				.then(function (successResponse){ 
+					console.log(successResponse);
+					pHistory.push($scope.model);
 				}, function (failedResponse){ console.log(failedResponse); });
 		}
 		$http.put('/api/product/download', {modelId: $scope.model._id})
@@ -33,6 +35,31 @@ app.controller('ModelController', function ($scope, AuthService, Model, model, m
 	// Payments Functionality
 
 	// Comments Functionality
+	$scope.myNewComment = {
+		user: null,
+		model: $scope.model._id,
+		comment: null,
+		rating: null
+	};
+	$scope.leaveComment = function (rating){
+		//Set up new comment
+		$scope.myNewComment.user = $scope.user._id;
+		$scope.myNewComment.rating = rating;
+		// POST Comment
+		$http.post('/api/comment', $scope.myNewComment)
+		.then(function (success) {
+			// If successful, add comment ID to model comments array
+			console.log('Comment', success.data);
+			$http.put('/api/product/comment', {modelId: $scope.model._id, commentId: success.data._id})
+			.then(function (model) {
+				// If successfully added comment to a model, add it to the view
+				$scope.model.comments.push(success.data);
+				$scope.myNewComment.user = $scope.myNewComment.comment = $scope.myNewComment.rating = null;  
+			});
+		}, function (failed) {
+			console.log(failed);
+		})
+	}
 
 	// Edit Functionality
 	$scope.update = function (){
