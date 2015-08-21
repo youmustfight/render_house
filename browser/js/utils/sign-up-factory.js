@@ -20,7 +20,7 @@ app.factory('SignUp', function ($http, $state, $location) {
 		});
 		},
 		pass: function (credentials) {
-		return $http.put('api/user/update/', credentials).then(function (res) {
+		return $http.put('api/user/newpassword', credentials).then(function (res) {
 			console.log(res.data)
 			return res.data;
 		});

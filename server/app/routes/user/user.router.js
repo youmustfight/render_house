@@ -79,13 +79,17 @@ router.put('/update',function (req,res,next){
 })
 
 router.put('/newpassword',function (req,res,next){
-	
-	User.findOneAndUpdate({_id: req.body._id}, req.body)
-	.exec()
-	.then(function (user){
-		console.log(user)
-		res.json(user)
-	}, next)
+    User.findById({_id: req.body._id}).exec()
+    .then(function (user){
+        console.log(user)
+        user.password = req.body.password;
+        user.refresh = req.body.refresh;
+        user.save().then(function(newpass){
+                console.log(newpass)
+                res.json(newpass)
+        }, next)
+    
+    })
 })
 
 
