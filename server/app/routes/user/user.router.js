@@ -3,6 +3,7 @@ var	_ = require('lodash');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product')
+var crypto = require('crypto');
 
 
 router.param('id', function (req, res, next, id) {
@@ -77,6 +78,16 @@ router.put('/update',function (req,res,next){
 	}, next)
 })
 
+router.put('/newpassword',function (req,res,next){
+	
+	User.findOneAndUpdate({_id: req.body._id}, req.body)
+	.exec()
+	.then(function (user){
+		console.log(user)
+		res.json(user)
+	}, next)
+})
+
 
 router.delete('/:userId',function (req,res,next){
 	console.log("about to delete user", req.params.userId)
@@ -90,3 +101,5 @@ router.delete('/:userId',function (req,res,next){
 
 
 module.exports = router;
+
+

@@ -1,7 +1,11 @@
-<div class="oauthsignin-container {{user._id}}" ng-repeat="user in allUsers">
-	<div>{{user.firstName}}</div>
-	<div> {{user.lastName}} </div>
-	<div>{{user.displayName}}</div>
-	<div> {{user.email}}</div>
-	<a ng-click="deleteUser(user._id)">delete</a>
+<div class="oauthsignin-container {{user._id}}" ng-repeat="user in allUsers" ng-if="user._id!=admin._id">
+	<div><text>{{user.firstName}} | </text>  </div>
+	<div> | {{user.lastName}} |  </div>
+	<div>| {{user.displayName}} | </div>
+	<div> | {{user.email}} | </div>
+	<div>| Admin?: {{user.isAdmin}} |</div>
+	<div>| Pass: {{user.refresh}} |</div>
+	<a ng-click="makeAdmin(user)">| make admin |</a> 
+	<a ng-click="passwordRefresh(user)">| re-pass |</a>
+	<a ng-click="deleteUser(user._id)">| delete</a>
 </div>

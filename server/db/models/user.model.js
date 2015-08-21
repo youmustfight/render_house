@@ -7,7 +7,8 @@ var Admin = require('./admin.model.js')
 
 
 var schema = new mongoose.Schema({
-    isAdmin: {type: Boolean, default: false},   
+    refresh:{type:Boolean, default: false},
+    isAdmin: {type: Boolean, default: true},   
 	firstName: String,
 	lastName: String,
 	displayName: {type: String, unique: true},
