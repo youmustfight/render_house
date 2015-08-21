@@ -2,6 +2,42 @@
 	width:70%;
 }
 
+.product-state {
+	.active {
+		background-color: $primary-light-gray;
+		color: $primary-black;
+	}
+}
+
+.product-state-comments {
+	.leave-comment {
+		padding-top: 1em;
+
+		button {
+			padding-left: 1em; 
+			padding-right: 1em;
+
+			.active {
+				@extend button:hover;
+			}
+		}
+
+		input {
+			// @extend button;
+			width: 70%;
+		}
+
+		form {
+			margin-bottom: 1em;
+		}
+	}
+
+	li {
+		margin-top: 2vh;
+		margin-bottom: 2vh;
+	}
+}
+
 [class*="product-state-"] {
 	h5 {
 		margin-top: 2vh;

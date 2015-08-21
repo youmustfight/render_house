@@ -1,0 +1,22 @@
+<div class="product-state-comments">
+	<!-- {{model.comments}} -->
+
+	<div class="leave-comment" ng-show="user">
+		<!-- <p>{{user}}</p> -->
+		<form>
+			<label>Leave a Comment and Rating</label><br><br>
+			<input type="text" ng-model="myNewComment.comment" placeholder="Comment" />
+			<button ng-repeat="r in [1,2,3,4]" ng-click="leaveComment(r)"><i class="fa fa-star-o"></i></button>
+		</form>
+		<hr />
+	</div>
+
+	<ul>
+		<li ng-repeat="comment in model.comments">
+			<!-- {{comment.comment}}  {{comment.rating}} -->
+			{{comment.rating}}<i class="fa fa-star"></i> -- {{comment.comment}}
+		</li>
+	</ul>
+
+
+</div>

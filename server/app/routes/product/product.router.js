@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Product = mongoose.model('Product')
 
 router.param('id', function (req, res, next, id) {
-	Product.findById(id).populate('creator').exec()
+	Product.findById(id).populate('creator').populate('comments').exec()
 		.then(function (model) {
 			if (!model) throw HttpError(404);
 			else {
@@ -29,16 +29,12 @@ router.get('/:id', function (req, res, next) {
 	res.json(req.model);
 });
 
-// Add a Product
-router.post('/upload', function (req, res, next) {
-	Product.create(req.body)
-	.then(function (Product) {
-		return Product.populate('creator');
+// Update a Product
+router.put('/', function (req,res,next){
+	Product.findOneAndUpdate({_id: req.body._id}, req.body, {upsert: true, new: true},function(err,product){
+		if(err) return next(err)
+		res.json(product)
 	})
-	.then(function (populated) {
-		res.status(201).json(populated);
-	})
-	.then(null, next);
 });
 
 // Increment Download on a Product
@@ -51,14 +47,25 @@ router.put('/download', function (req, res, next) {
 			});
 });
 
-// Update a Product
-router.put('/', function (req,res,next){
-	Product.findOneAndUpdate({_id: req.body._id}, req.body, {upsert: true, new: true},function(err,product){
-		if(err) return next(err)
-		res.json(product)
-	})
-});
+// Add a Comment
+router.put('/comment', function (req, res, next) {
+	Product.findOneAndUpdate({_id: req.body.modelId}, { $addToSet: {comments: req.body.commentId}}).exec()
+		.then( function (updatedModel) {
+			res.json(updatedModel);
+		});
+})
 
+// Add a Product
+router.post('/upload', function (req, res, next) {
+	Product.create(req.body)
+	.then(function (Product) {
+		return Product.populate('creator');
+	})
+	.then(function (populated) {
+		res.status(201).json(populated);
+	})
+	.then(null, next);
+});
 
 // Delete a Product
 router.delete('/', function (req, res, next) {
