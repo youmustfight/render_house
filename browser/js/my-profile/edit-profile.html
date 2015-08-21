@@ -6,9 +6,9 @@
         <!--<pre>{{signUp | json}}</pre>
         <pre>{{signInForm | json}}</pre>-->
     
-    <div class="form-group" ng-class="{ 'has-error' : !signInForm.firstName.$pristine }">
+    <div class="form-group">
         <label for="firstName">First Name <span ng-show="signInForm.firstName.$invalid&&!signInForm.firstName.$pristine&&signInForm.$submitted" class="submitted">Your first name is too short.</span></label>
-        <input type="text" ng-model="signUp.firstName" required ng-minlength="2" ng-class="{'submitted': signInForm.firstName.$invalid&&!signInForm.firstName.$pristine&&signInForm.$submitted}" name="firstName"class="form-control" id="firstName" ng-value="{{user.firstName}}">
+        <input type="text" ng-model="signUp.firstName" required ng-minlength="2" ng-class="{'submitted': signInForm.firstName.$invalid&&!signInForm.firstName.$pristine&&signInForm.$submitted}" name="firstName"class="form-control" id="firstName" placeholder="{{user.firstName}}">
     </div>
    <div class="form-group">
         <label for="lastName">Last Name <span ng-show="signInForm.lastName.$invalid&&!signInForm.lastName.$pristine&&signInForm.$submitted" class="submitted">Your last name is too short.</span></label>

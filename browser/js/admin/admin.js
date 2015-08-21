@@ -52,6 +52,20 @@ app.controller('AdminCtrl', function ($scope, SignUp, allUsers, AuthService, adm
                     $scope.admin = user;
                 });
             };
+       $scope.makeAdmin = function(user){
+           user.isAdmin = !user.isAdmin;
+           SignUp.update(user).then(function(user){
+              console.log(user.isAdmin) 
+           });
+       }
+       
+       $scope.passwordRefresh = function(user){
+           console.log(user.refresh)
+           user.refresh = !user.refresh;
+           SignUp.update(user).then(function(user){
+              console.log(user.refresh) 
+           });
+       }
        
        $scope.deleteUser = function(userid){
                SignUp.deleteUser(userid).then(function () {
