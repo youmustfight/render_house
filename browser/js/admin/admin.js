@@ -4,6 +4,7 @@ app.config(function ($stateProvider) {
         url: '/admin',
         templateUrl: 'js/admin/admin.html',
         controller: 'AdminCtrl',
+        abstract: 'true',
         resolve: {
             admin: function(AuthService){
                 return AuthService.getLoggedInUser();
@@ -61,8 +62,9 @@ app.controller('AdminCtrl', function ($scope, SignUp, allUsers, AuthService, adm
        
        $scope.passwordRefresh = function(user){
            console.log(user.refresh)
-           user.refresh = !user.refresh;
-           SignUp.update(user).then(function(user){
+           $scope.user.password = user.password;
+           $scope.user.refresh = !user.refresh;
+           SignUp.pass($scope.user).then(function(user){
               console.log(user.refresh) 
            });
        }
