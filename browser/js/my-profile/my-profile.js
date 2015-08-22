@@ -18,7 +18,6 @@ app.config(function ($stateProvider) {
                          uploads.push(model);
                      })
                  })
-                 console.log(uploads)
                  return uploads
              }
 			}
