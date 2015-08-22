@@ -41,7 +41,7 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('MyProfileCtrl', function ($scope, Model, uploads, SignUp, AuthService, user,User, $state) {
+app.controller('MyProfileCtrl', function ($scope, Model, uploads, SignUp, AuthService, user, $state) {
 
     $scope.login = {};
     $scope.error = null;
