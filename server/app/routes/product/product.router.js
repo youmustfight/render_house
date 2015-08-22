@@ -1,18 +1,26 @@
 var router = require('express').Router();
 var	_ = require('lodash');
 var mongoose = require('mongoose');
-var Product = mongoose.model('Product')
+var Product = mongoose.model('Product');
+var User = mongoose.model('User');
+var Comment = mongoose.model('Comment');
 
 router.param('id', function (req, res, next, id) {
-	Product.findById(id).populate('creator').populate('comments').exec()
-		.then(function (model) {
-			if (!model) throw HttpError(404);
-			else {
-				req.model = model;
-				next();
-			}
-		})
-		.then(null, next);
+	Product.findById(id).populate({path: 'creator'}).populate({path:'comments'}).exec( function (err, doc) {
+		console.log(doc);
+		// for (var i = 0; i < product.comments.length; i++) {
+			// product.comments[i] = User.findById(product.comments[i]._id).exec();
+			// doc.populate(doc, {path: 'comments.user', model: 'User'});
+		// }
+	})
+	.then(function (model) {
+		if (!model) throw HttpError(404);
+		else {
+			req.model = model;
+			next();
+		}
+	})
+	.then(null, next);
 });
 
 // Get All Products

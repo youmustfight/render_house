@@ -13,10 +13,22 @@
 
 	<ul>
 		<li ng-repeat="comment in model.comments">
-			<!-- {{comment.comment}}  {{comment.rating}} -->
-			{{comment.rating}}<i class="fa fa-star"></i> -- {{comment.comment}}
+		<div class="comment">
+			<div class="comment-rating">
+				{{comment.rating}}<i class="fa fa-star"></i>
+			</div>
+			<div class="comment-picture">
+				<img src="{{comment.user.pictureUrl}}" />
+			</div>
+			<div class="comment-content">
+				<h5>{{comment.user.displayName}}</h5>
+				<p>{{comment.comment}}</p>
+			</div>
+			
+		</div>
 		</li>
 	</ul>
 
+	<pre>{{comments}}</pre>
 
 </div>
