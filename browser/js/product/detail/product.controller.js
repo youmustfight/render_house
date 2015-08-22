@@ -1,9 +1,10 @@
 'use strict';
 
-app.controller('ModelController', function ($scope, AuthService, Model, model, models, $http, $state) {
+app.controller('ModelController', function ($scope, AuthService, Model, model, models, $http, $state, $window) {
 	// Setup Variables
 	$scope.model = model;
 	$scope.models = models;
+
 
 	$scope.user = null;
 	var User = function() {
@@ -33,6 +34,27 @@ app.controller('ModelController', function ($scope, AuthService, Model, model, m
 	}
 
 	// Payments Functionality
+
+	$scope.card = {};
+	$scope.payment = {};
+
+
+    $scope.submit = function () {
+
+        $window.Stripe.card.createToken($scope.card, function (status, response) {
+        	$scope.stripeToken = response.id;
+        	console.log('ths is response', response, $scope.payment.amount, $scope.stripeToken)
+        	$http.post('/api/payment', {
+        		token: $scope.stripeToken,
+                manifest: $scope.card,
+                amount: $scope.payment.amount
+        	}).then(function(response){
+        		console.log('this is response', response)
+        	})
+        	
+        });
+
+    };
 
 	// Comments Functionality
 	$scope.myNewComment = {

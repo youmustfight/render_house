@@ -1,9 +1,28 @@
 'use strict';
 
-app.controller('ModelDetailController', function($scope, AuthService, Model, model, models, $http) {
+app.controller('ModelDetailController', function($scope, AuthService, Model, model, models, $http, $window) {
     $scope.model = model;
     $scope.models = models;
     $scope.paymentProcess = 'noPay';
+    $scope.card = {};
+    $scope.amount = Number;
+
+    $scope.submit = function () {
+    	alert("got here")
+        $window.Stripe.card.createToken($scope.card, function (status, response) {
+        	$scope.stripeToken = response.id;
+        	console.log('ths is response', status)
+        	$http.post('/api/payment', {
+        		token: $scope.token,
+                manifest: $scope.card,
+                amount: $scope.amount
+        	}).then(function(response){
+        		console.log('this is response', response)
+        	})
+        	
+        });
+
+    };
 
     // Set User
     $scope.user = null;

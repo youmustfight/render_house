@@ -30,6 +30,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.1/bootstrap-social.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- test Stripe -->
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+  </script>
+  <script type="text/javascript">
+  // This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_mrcQ5gkNEMMUbRBdIm08rceq');
+  // ...
+  </script>
+
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-animate.js"></script>-->
     <script src="/lodash/index.js"></script>
     <script src="/angular/angular.js"></script>
@@ -37,8 +47,9 @@
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/jquery/dist/jquery.min.js"></script>
     <script src="/js/three.edited.js"></script>
-    <script src="/lib/stripe.js"></script>
+    
     <script src="/main.js"></script>
+    <script src="/angular-payments/lib/angular-payments.min.js"></script>
 </head>
 <body ng-app="FullstackGeneratedApp">
     
