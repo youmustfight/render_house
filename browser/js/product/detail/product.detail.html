@@ -1,14 +1,14 @@
 <div class="product-state-detail">
-	<h4 class="inline">Tags:</h4> <h4 ng-repeat="tag in model.tags" class="inline tags"><u ui-sref="search({query:tag})">{{tag}}</u>  </h4>
-	<h5 ui-sref="user({id: model.creator._id})">By {{model.creator.firstName}} {{model.creator.lastName}}  ---  Downloaded {{model.timesDownloaded}} Times</h5>
-	<p>{{model.description}}.</p>
-	<hr />
-	<h5>Users Also Download</h5>
+    <h4 class="inline">Tags:</h4> <h4 ng-repeat="tag in model.tags" class="inline tags"><u ui-sref="search({query:tag})">{{tag}}</u>  </h4>
+    <h5 ui-sref="user({id: model.creator._id})">By {{model.creator.firstName}} {{model.creator.lastName}}  ---  Downloaded {{model.timesDownloaded}} Times</h5>
+    <p>{{model.description}}.</p>
+    <hr />
+    <h5>Users Also Download</h5>
 </div>
 <div class="container">
-	<ul>
-		<li ng-repeat="model in models | orderBy: '-dateCreated'  | limitTo : 3" >
-			<product-tile class="render-tile" model="model"></product-tile>
-		</li>
-	</ul>
+    <ul>
+        <li ng-repeat="model in models | orderBy: '-dateCreated'  | limitTo : 3" >
+            <product-tile class="render-tile" model="model"></product-tile>
+        </li>
+    </ul>
 </div>

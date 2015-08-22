@@ -8,6 +8,7 @@ router.use('/product', require('./product/product.router'));
 router.use('/comment', require('./comments/comment.router'));
 router.use('/user', require('./user/user.router'));
 router.use('/recs', require('./recommendation/recommendation.router'));
+router.use('/payment', require('./payment/payment.router.js'));
 // Make sure this is after all of
 // the registered routes!
 router.use(function (req, res) {
