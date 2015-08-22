@@ -59,6 +59,7 @@ router.put('/comment', function (req, res, next) {
 router.post('/upload', function (req, res, next) {
 	Product.create(req.body)
 	.then(function (Product) {
+		// Populate isn't working probably because product no longer has the mongoose methods attached
 		return Product.populate('creator');
 	})
 	.then(function (populated) {
