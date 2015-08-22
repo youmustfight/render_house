@@ -32,11 +32,13 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('MyProfileCtrl', function ($scope, SignUp, AuthService, user, $state) {
+app.controller('MyProfileCtrl', function ($scope, Model, SignUp, AuthService, user, $state) {
 
     $scope.login = {};
     $scope.error = null;
-
+    $scope.user = user;
+    $scope.uploads = null;
+// update the user
     $scope.update = function (signUpInfo) {
 
         $scope.error = null;
@@ -48,25 +50,35 @@ app.controller('MyProfileCtrl', function ($scope, SignUp, AuthService, user, $st
         });
 
     };
-    
+ // debug check user   
     $scope.showUser = function(){
        console.log($scope.user, "ll")
     }
+ //  get logged in user 
+    $scope.isLoggedIn = function () {
+        // var signed = AuthService.isAuthenticated();
+        // console.log("signed in =" + signed)
+        $scope.loggedIn = AuthService.isAuthenticated();
+        return AuthService.isAuthenticated();
+    };
+// set the user though its already set in the resolve
+    var setUser = function () {
+        AuthService.getLoggedInUser().then(function (user) {
+            $scope.user = user;
+        });
+    };
+
+//set uploads
+    var setUploads = function(){
+        console.log("hit 1")
+        Model.getUploads($scope.user._id).then(function(uploads){
+            $scope.uploads = uploads;
+             console.log($scope.uploads)
+            })
+    }
     
-     $scope.user = user;
-
-            $scope.isLoggedIn = function () {
-                // var signed = AuthService.isAuthenticated();
-                // console.log("signed in =" + signed)
-                $scope.loggedIn = AuthService.isAuthenticated();
-                return AuthService.isAuthenticated();
-            };
-
-            var setUser = function () {
-                AuthService.getLoggedInUser().then(function (user) {
-                    $scope.user = user;
-                });
-            };
+    setUploads();
+  
 
 });
 

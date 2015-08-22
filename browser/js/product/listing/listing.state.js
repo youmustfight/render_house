@@ -19,7 +19,7 @@ app.config( function ($stateProvider) {
 								return new Model(obj);
 							});
 							// console.log(mappedResponse[0]);
-							Model.changeModel(mappedResponse[0])
+							// Model.changeModel(mappedResponse[0])
 							return mappedResponse;
 						});
 

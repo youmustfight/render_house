@@ -1,7 +1,11 @@
 {
-  "name": "FullstackGeneratedApp",
+  "name": "RENDERHOUSE",
   "version": "1.0.0",
   "description": "A generated project at Fullstack Academy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awronka/render_house.git"
+  },
   "main": "server/start.js",
   "scripts": {
     "start": "nodemon --watch server -e js,html server/start.js",

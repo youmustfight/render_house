@@ -19,6 +19,12 @@ app.factory('SignUp', function ($http, $state, $location) {
 			return res.data;
 		});
 		},
+		pass: function (credentials) {
+		return $http.put('api/user/newpassword', credentials).then(function (res) {
+			console.log(res.data)
+			return res.data;
+		});
+		},
 		deleteUser: function(creds){
 			return $http.delete('api/user/'+ creds).then(function(res){
 				console.log("this user is gone" + res.data)

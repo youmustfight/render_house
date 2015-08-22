@@ -5,6 +5,7 @@ var User = mongoose.model('User');
 var Product = mongoose.model('Product')
 
 
+
 router.param('id', function (req, res, next, id) {
 	console.log('resolving for user')
 	User.findById(id).populate('myModels').populate('purchaseHistory').exec()
@@ -77,6 +78,20 @@ router.put('/update',function (req,res,next){
 	}, next)
 })
 
+router.put('/newpassword',function (req,res,next){
+    User.findById({_id: req.body._id}).exec()
+    .then(function (user){
+        console.log(user)
+        user.password = req.body.password;
+        user.refresh = req.body.refresh;
+        user.save().then(function(newpass){
+                console.log(newpass)
+                res.json(newpass)
+        }, next)
+    
+    })
+})
+
 
 router.delete('/:userId',function (req,res,next){
 	console.log("about to delete user", req.params.userId)
@@ -90,3 +105,5 @@ router.delete('/:userId',function (req,res,next){
 
 
 module.exports = router;
+
+

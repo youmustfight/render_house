@@ -10,14 +10,20 @@ app.config(function ($stateProvider) {
                 },
             allUsers: function(SignUp){
                 return SignUp.getUsers();
+                },
+            allModels: function(Model){
+                return Model.fetchAll();
                 }
         }
     })
 
 });
 
-app.controller('AdminCtrl', function ($scope, SignUp, allUsers, AuthService, admin, $state) {
+app.controller('AdminCtrl', function ($scope, SignUp, Model, allModels, allUsers, AuthService, admin, $state) {
 
+
+    $scope.allModels = allModels;
+    $scope.allUsers = allUsers;
     $scope.login = {};
     $scope.error = null;
 
@@ -31,8 +37,7 @@ app.controller('AdminCtrl', function ($scope, SignUp, allUsers, AuthService, adm
         });
 
     };
-   
-    $scope.allUsers = allUsers;
+
     
     $scope.showUser = function(){
        console.log($scope.user, "ll")
@@ -52,14 +57,31 @@ app.controller('AdminCtrl', function ($scope, SignUp, allUsers, AuthService, adm
                     $scope.admin = user;
                 });
             };
+       $scope.makeAdmin = function(user){
+           user.isAdmin = !user.isAdmin;
+           SignUp.update(user).then(function(user){
+              console.log(user.isAdmin) 
+           });
+       }
+       
+       $scope.passwordRefresh = function(user){
+           console.log(user.refresh)
+           user.refresh = !user.refresh;
+           SignUp.pass(user).then(function(user){
+              console.log(user.refresh) 
+           });
+       }
+       $scope.deleteModel = function(modelid){
+           Model.deleteModel(modelid).then(function(){
+               $("."+modelid).remove();
+           })
+       }
        
        $scope.deleteUser = function(userid){
                SignUp.deleteUser(userid).then(function () {
                          $("."+userid).remove();
                // $state.go('admin')
-        }).catch(function () {
-            $scope.error = 'Invalid login credentials.';
-        });
+        })
        }
 
 });
