@@ -1,113 +1,14 @@
-
-<h1 class="vertical-space">{{model.title}}</h1>
-<h4 class="inline">TAGS:</h4>
-<h4 ng-repeat="tag in model.tags" class="inline">{{tag}}</h4>
-<br>
-<br>
-<h5 ui-sref="user({id: model.creator._id})">Made by {{model.creator.firstName}} {{model.creator.lastName}}  ---  Downloaded {{model.timesDownloaded}} Times</h5>
-<br>
-<hr />
-<div class="product-detail" ng-show="paymentProcess == 'noPay'">
-    <a target="_self" href="{{model.modelFileUrl}}" download="{{model.title}}">
-        <button ng-click="download()" ng-show="user._id != model.creator._id">Download</button>
-    </a>
-    <button ng-click="paymentProcess = 'tip'" ng-show="user._id != model.creator._id">Tip {{model.creator.displayName}} $5</button>
-    <br>
-    <br>
+<div class="product-state-detail">
+    <h4 class="inline">Tags:</h4> <h4 ng-repeat="tag in model.tags" class="inline tags"><u ui-sref="search({query:tag})">{{tag}}</u>  </h4>
+    <h5 ui-sref="user({id: model.creator._id})">By {{model.creator.firstName}} {{model.creator.lastName}}  ---  Downloaded {{model.timesDownloaded}} Times</h5>
     <p>{{model.description}}.</p>
-    <br>
-    <br>
     <hr />
     <h5>Users Also Download</h5>
-    <div class="container">
-        <ul>
-            <li ng-repeat="model in models | orderBy: '-dateCreated'  | limitTo : 3">
-                <product-tile class="render-tile" model="model"></product-tile>
-            </li>
-        </ul>
-    </div>
 </div>
-<!-- test Stripe -->
-<script>
-var stripeResponseHandler = function(status, response) {
-    	console.log('this is response', response)
-      var $form = $('#payment-form');
-      if (response.error) {
-        // Show the errors on the form
-        $form.find('.payment-errors').text(response.error.message);
-        $form.find('button').prop('disabled', false);
-      } else {
-        // token contains id, last4, and card type
-        var token = response.id;
-        // Insert the token into the form so it gets submitted to the server
-        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-        // and re-submit
-        $form.get(0).submit();
-      }
-    };
-
-</script>
-<script type="text/javascript">
-// This identifies your website in the createToken call below
-Stripe.setPublishableKey('pk_test_IW99MprhrEIHaSrHlTsxrYuI');
-// ...
-</script>
-<script>
-jQuery(function($) {
-    $('#payment-form').submit(function(e) {
-        var $form = $(this);
-        // Disable the submit button to prevent repeated clicks
-        $form.find('button').prop('disabled', true);
-        Stripe.card.createToken({
-
-            number: $('#card-number').val(),
-            cvc: $('#card-cvc').val(),
-            exp_month: $('#card-expiry-month').val(),
-            exp_year: $('#card-expiry-year').val()
-        }, function(status, response){
-        	stripeResponseHandler(status, response)
-        });
-        // Prevent the form from submitting with the default action
-        return false;
-    });
-});
-</script>
-<div ng-show="paymentProcess == 'tip'">
-<div>
-<div class="span4">
-    <h3>Shut up and take my money!</h3>
+<div class="container">
+    <ul>
+        <li ng-repeat="model in models | orderBy: '-dateCreated'  | limitTo : 3" >
+            <product-tile class="render-tile" model="model"></product-tile>
+        </li>
+    </ul>
 </div>
-<form action="" method="POST" id="payment-form">
-    <span class="payment-errors"></span>
-    <div class="form-row">
-        <label>
-            
-            <input id="tip" type="text" size="4" placeholder="How much to tip?"/>
-        </label>
-    </div>
-    <div class="form-row">
-        <label>
-            
-            <input id="card-number" type="text" size="20" placeholder="Card Number"/>
-        </label>
-    </div>
-    <div class="form-row">
-        <label>
-           
-            <input id="card-cvc" type="text" size="4" placeholder=
-            "CVC"/>
-        </label>
-    </div>
-    <div class="form-row">
-        <label>
-           
-            <input id="card-expiry-month" type="text" size="2" placeholder="Month MM"/>
-        </label>
-        
-        <span> / </span>
-        <input id="card-expiry-year" type="text" size="4" placeholder="Year YYYY"/>
-    </div>
-    <button type="submit">Submit Payment</button>
-</form>
-</div>
-
