@@ -152,10 +152,33 @@ alert{
 	border: none;
 }
 
-[ui-view].ng-leave {
-  animation: fadeOut 0.5s; 
+// [ui-view].ng-leave {
+//   animation: fadeOut 0.5s; 
+// }
+
+// [ui-view].ng-enter {
+//   animation: fadeIn 0.5s;
+// }
+
+.user-profile{
+	img{align-content: center; 
+		padding: 1%;
+		max-height: 50px;
+		max-width: 50px;
+	}
+	padding-top: 2%;
+	h2{
+	border-bottom: 1px solid black;}
+	span{
+		color: #707070
+	}
+	width: 100%;
+	height: 35px;
+	font-size: 25px;
 }
 
-[ui-view].ng-enter {
-  animation: fadeIn 0.5s;
+.profile{
+	font-style: bold;
+	font-size: 30px;
+	color: black;
 }

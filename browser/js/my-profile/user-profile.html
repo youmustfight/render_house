@@ -1,13 +1,11 @@
-
-<div class="pic">
+<div class="user-profile pic">
 	<div class="img"><img src="{{user.pictureUrl}}"/></div>
-	<i class="icon-plus"></i>
-	<i class="icon-ok"></i>
 </div>
-<h2>Display Name: {{user.displayName}}</h2>
-<h2>First Name: {{user.firstName}}</h2>
-<h2>Last Name: {{user.lastName}}</h2>
-<h2>Email Address: {{user.email}}</h2>
-<h2 ng-repeat="upload in uploads"> Models : {{upload.title}}</h2>
+<div class="user-profile profile"><h2><span>My Profile</span></h2></div>
 
+<div class="user-profile "><h2><span>Display Name: </span>{{user.displayName}}</h2></div>
+<div class="user-profile"><h2><span>First Name: </span>{{user.firstName}}</h2></div>
+<div class="user-profile"><h2><span>Last Name: </span>{{user.lastName}}</h2></div>
+<div class="user-profile"><h2><span>Email: </span>{{user.email}}</h2></div>
+<div class="user-profile" ng-repeat="upload in uploads"><h2><span>Models: </span>{{upload.title}}</h2></div>
 <button ui-sref="myprofile.editUser">Edit Profile</button>
