@@ -35,6 +35,41 @@
 	li {
 		margin-top: 2vh;
 		margin-bottom: 2vh;
+
+		.comment {
+			width: 100%;
+			float: left;
+			margin-top: 1vh;
+			margin-bottom: 1vh;
+		}
+		[class*="comment-"] {
+			float: left;
+			h5 {
+				padding: none;
+				margin: none;
+			}
+		}
+		.comment-rating {
+			padding-top: 10px;
+		}
+		.comment-picture {
+			height: 100%;
+			padding: .2em;
+			margin-left: .4em;
+			img {
+				width: auto;
+				height: 2em;
+			}
+		}
+		.comment-content {
+			width: 60%;
+			padding: .2em;
+			margin-left: .3em;
+			h5, p {
+				margin: 0;
+				margin-bottom: .1em;
+			}
+		}
 	}
 }
 

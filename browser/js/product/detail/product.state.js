@@ -8,14 +8,14 @@ app.config(function ($stateProvider) {
 		templateUrl: 'js/product/detail/product.html',
 		controller: 'ModelController',
 		resolve: {
-			model: function (Model, $stateParams, $http) {
+			model: function (Model, $stateParams) {
 				var model = new Model({_id: $stateParams.id});
 				return model.fetch();
 			},
 			models: function (Model) {
 				// "Users Also Download" recommendation
 				return Model.fetchAll();
-			}
+			}			
 		}				
 	})
 	.state('model.detail', {
@@ -28,7 +28,12 @@ app.config(function ($stateProvider) {
 	})
 	.state('model.comments', {
 		url: '',
-		templateUrl: 'js/product/detail/product.comments.html'
+		templateUrl: 'js/product/detail/product.comments.html',
+		resolve: {
+			comments: function (Comment, model) {
+				return Comment.getComments(model.comments);
+			}
+		}
 	})
 	.state('model.edit', {
 		url: '',
