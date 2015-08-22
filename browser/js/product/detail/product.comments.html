@@ -21,7 +21,7 @@
 				<img src="{{comment.user.pictureUrl}}" />
 			</div>
 			<div class="comment-content">
-				<h5>{{comment.user.displayName}}</h5>
+				<h5 ui-sref="user({id: comment.user._id})">{{comment.user.displayName}}</h5>
 				<p>{{comment.comment}}</p>
 			</div>
 			
