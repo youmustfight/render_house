@@ -49,6 +49,12 @@ app.factory('Model', function ($http) {
 	Model.getModel = function () {
 		return renderObj;
 	};
+	
+	Model.deleteModel = function(productid){
+		return $http.delete(Model.url+productid).then(function(res){
+			return res.data;
+		})
+	}
 
 
 	return Model;
