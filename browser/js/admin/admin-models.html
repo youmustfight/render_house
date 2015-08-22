@@ -1,4 +1,16 @@
-<div class="oauthsignin-container {{model._id}}" ng-repeat="model in allModels" ng-if="model._id!=admin._id">
-	<div><text>{{model.title}} | </text>  </div>
-	<a ng-click="deleteModel(model._id)">| delete</a>
+
+<!--<div class="oauthsignin-container">
+	<div class="admin-clear"><h2>All Models</h2>  </div>
+</div>-->
+<div class="oauthsignin-container">
+	<div class="admin-grid admin-tlt"><text>Title</text>  </div>
+	<div class="admin-grid admin-tlt"><text>Creator</text>  </div>
+	<div class="admin-grid admin-clear"><a ng-click="deleteModel(model._id)">delete</a><div>
+</div>
+<!--<br>
+<br>-->
+<div class="oauthsignin-container {{model._id}}" ng-repeat="model in allModels">
+	<div class="admin-grid"><text>{{model.title}}</text>  </div>
+	<div class="admin-grid"><text>{{model.creator.firstName}}</text>  </div>
+	<div class="admin-grid admin-btn"><a ng-click="deleteModel(model._id)">delete</a><div>
 </div>

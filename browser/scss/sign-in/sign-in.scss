@@ -120,3 +120,42 @@ alert{
 .my-profile:active{
 	color: white;
 }
+
+.admin-grid{
+	float: left;
+	border:  black solid 1px;
+	border-radius: 5px;;
+	a{	color: white;
+		text-decoration: none;
+	}
+	a:hover{
+		text-decoration: none;
+	}
+	margin: 1%;
+	text-align: center;
+	
+	width: 80px;
+	height: 40px;
+}
+
+.admin-btn{
+	background: darkgray;
+	
+}
+
+.admin-tlt{
+	font-weight: bold;
+	background: lightgray;
+}
+
+.admin-clear{
+	border: none;
+}
+
+[ui-view].ng-leave {
+  animation: fadeOut 0.5s; 
+}
+
+[ui-view].ng-enter {
+  animation: fadeIn 0.5s;
+}
