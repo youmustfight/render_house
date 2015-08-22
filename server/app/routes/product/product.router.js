@@ -37,6 +37,15 @@ router.put('/', function (req,res,next){
 	})
 });
 
+//Get user uploads
+router.get('/:userid', function(req,res,next){
+	console.log("hit 3")
+	Product.find({creator:req.params.userid}).exec().then(function(userProducts){
+		res.json(userProducts)
+	})
+	.then(null,next);
+})
+
 // Increment Download on a Product
 router.put('/download', function (req, res, next) {
 	Product.findOneAndUpdate({_id: req.body.modelId}, { $inc: { timesDownloaded: 1 } }).exec()
@@ -69,12 +78,15 @@ router.post('/upload', function (req, res, next) {
 });
 
 // Delete a Product
-router.delete('/', function (req, res, next) {
-	Product.findById(req.body._id, function (err, doc) {
-		doc.remove();
-	});
-})
-
+router.delete('/:productId',function (req,res,next){
+	console.log("about to delete product", req.params.productId)
+	Product.findByIdAndRemove(req.params.productId)
+	.exec()
+	.then(function (product){
+		console.log("product deleted")
+		res.json(product)
+	}, next)
+});
 
 
 module.exports = router;

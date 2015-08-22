@@ -1,0 +1,4 @@
+<div class="oauthsignin-container {{model._id}}" ng-repeat="model in allModels" ng-if="model._id!=admin._id">
+	<div><text>{{model.title}} | </text>  </div>
+	<a ng-click="deleteModel(model._id)">| delete</a>
+</div>
