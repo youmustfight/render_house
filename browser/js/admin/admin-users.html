@@ -1,15 +1,22 @@
-<div class="oauthsignin-container {{user._id}}" ng-repeat="user in allUsers" ng-if="user._id!=admin._id">
-	<div><text>{{user.firstName}} | </text>  </div>
-	<div> | {{user.lastName}} |  </div>
-	<div>| {{user.displayName}} | </div>
-	<div> | {{user.email}} | </div>
-	<div>| Admin?: {{user.isAdmin}} |</div>
-	<div>| Pass: {{user.refresh}} |</div>
-	<a ng-click="makeAdmin(user)">| make admin |</a> 
-	<a ng-click="passwordRefresh(user)">| re-pass |</a>
-	<a ng-click="deleteUser(user._id)">| delete</a>
+<div class="oauthsignin-container">
+	<div class="admin-grid admin-tlt"><text>First Name</text>  </div>
+	<div class="admin-grid admin-tlt"><text>Last Name</text>  </div>
+	<div class="admin-grid admin-tlt"><text>Display Name</text>  </div>
+	<div class="admin-grid admin-tlt"><text>Email Address</text>   </div>
+	<div class="admin-grid admin-tlt"><text>Admin Status</text>  </div>
+	<div class="admin-grid admin-tlt"><text>Pass Status</text>  </div>
+	<div class="admin-grid admin-clear"><a  ng-click="makeAdmin(user)"> make admin </a></div>
+	<div class="admin-grid admin-clear"> <a ng-click="passwordRefresh(user)">re-pass </a> </div>
+	<div class="admin-grid admin-clear"> <a  ng-click="deleteUser(user._id)">delete</a> </div>
 </div>
-
-<!-- <div class="oauthsignin-container {{user._id}}" ng-repeat="user in allUsers" ng-if="user._id!=admin._id">
-	{{user.firstName}} | {{user.lastName}} | {{user.displayName}} | {{user.email}} | Pass: {{user.refresh}} | <a ng-click="makeAdmin(user)">make admin</a> | <a ng-click="passwordRefresh(user)">re-pass</a> | <a ng-click="deleteUser(user._id)">delete</a><br>
-</div> -->
+<div class="oauthsignin-container {{user._id}}" ng-repeat="user in allUsers" ng-if="user._id!=admin._id">
+	<div class="admin-grid"><text>{{user.firstName}}</text>  </div>
+	<div class="admin-grid"><text> {{user.lastName}}</text>  </div>
+	<div class="admin-grid"><text>{{user.displayName}}</text>  </div>
+	<div class="admin-grid"><text> {{user.email}}</text>   </div>
+	<div class="admin-grid"><text>{{user.isAdmin}}</text>  </div>
+	<div class="admin-grid"><text>{{user.refresh}}</text>  </div>
+	<div class="admin-grid admin-btn"><a ng-click="makeAdmin(user)"> make admin </a></div>
+	<div class="admin-grid admin-btn"> <a ng-click="passwordRefresh(user)">re-pass </a> </div>
+	<div class="admin-grid admin-btn"> <a  ng-click="deleteUser(user._id)">delete</a> </div>
+</div>

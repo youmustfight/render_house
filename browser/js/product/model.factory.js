@@ -56,8 +56,7 @@ app.factory('Model', function ($http) {
 		})
 	}
 	
-	Model.getUploads = function(userid){
-		console.log("hit 2")
+	Model.getUpload = function(userid){
 		return $http.get(Model.url+userid).then(function(res){
 			return res.data;
 		})

@@ -24,7 +24,7 @@ app.controller('PasswordCtrl', function ($scope,SignUp,user, AuthService, $state
           $scope.user.refresh = false;
            SignUp.pass($scope.user).then(function(user){
               console.log(user) 
-              // $state.go('listing');
+              $state.go('listing');
            });
            // console.log($scope.user)
           

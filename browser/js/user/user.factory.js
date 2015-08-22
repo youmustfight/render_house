@@ -9,7 +9,7 @@ app.factory('User', function ($http) {
 	User.url = '/api/user/';
 	Object.defineProperty(User.prototype, 'url', {
 		get: function () {
-			return User.url + this._id;
+			return User.url + this.id;
 		}
 	})
 

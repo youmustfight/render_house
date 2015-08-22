@@ -69,7 +69,7 @@ app.controller('AdminCtrl', function ($scope, SignUp, Model, allModels, allUsers
            user.refresh = !user.refresh;
            SignUp.pass(user).then(function(user){
               console.log(user.refresh) 
-              $state.go('listing')
+             
            });
        }
        $scope.deleteModel = function(modelid){
