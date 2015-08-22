@@ -9,8 +9,18 @@ app.config(function ($stateProvider) {
         link: 'pwCheck',
         resolve: {
             user: function(AuthService){
-                return AuthService.getLoggedInUser();
-                }
+                return AuthService.getLoggedInUser()
+                },
+            uploads: function(Model, user){
+                 var uploads = []
+                user.myModels.forEach(function(obj){
+                   Model.getUpload(obj).then(function(model){
+                         uploads.push(model);
+                     })
+                 })
+                 console.log(uploads)
+                 return uploads
+             }
 			}
         
          }).state('myprofile.user',{
@@ -32,12 +42,12 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('MyProfileCtrl', function ($scope, Model, SignUp, AuthService, user, $state) {
+app.controller('MyProfileCtrl', function ($scope, Model, uploads, SignUp, AuthService, user,User, $state) {
 
     $scope.login = {};
     $scope.error = null;
     $scope.user = user;
-    $scope.uploads = null;
+    $scope.uploads = uploads;
 // update the user
     $scope.update = function (signUpInfo) {
 
@@ -50,6 +60,20 @@ app.controller('MyProfileCtrl', function ($scope, Model, SignUp, AuthService, us
         });
 
     };
+ // populate uploads with models
+  // var setUploads = function(){
+    //   console.log($scope.uploads)    
+    //   $scope.user.myModels.forEach(function(obj){
+    //       // console.log(obj)
+    //      Model.getUpload(obj).then(function(model){
+    //         //  console.log(model)
+    //          $scope.uploads.push(model)
+    //         //  debugger;
+    //      });
+    //   });
+    
+  // } 
+    
  // debug check user   
     $scope.showUser = function(){
        console.log($scope.user, "ll")
@@ -68,18 +92,8 @@ app.controller('MyProfileCtrl', function ($scope, Model, SignUp, AuthService, us
         });
     };
 
-//set uploads
-    var setUploads = function(){
-        console.log("hit 1")
-        Model.getUploads($scope.user._id).then(function(uploads){
-            $scope.uploads = uploads;
-             console.log($scope.uploads)
-            })
-    }
-    
-    setUploads();
-  
-
+// setUploads();
+// console.log($scope.uploads)
 });
 
 
