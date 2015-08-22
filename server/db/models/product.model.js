@@ -11,7 +11,7 @@ var Product = new mongoose.Schema({
 	formatsAvailable: {type:String},
 	price: Number,
 	freeOption: Boolean,
-	// creator: {type: mongoose.Schema.Types.ObjectId, ref:"User", required:true},
+	creator: {type: mongoose.Schema.Types.ObjectId, ref:"User", required:true},
 	timesDownloaded: {type: Number, default: 0},
 	comments: [{type: mongoose.Schema.Types.ObjectId, ref:"Comment"}],
 	webRenderScale: Number,

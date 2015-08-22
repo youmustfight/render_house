@@ -37,6 +37,15 @@ router.put('/', function (req,res,next){
 	})
 });
 
+//Get user uploads
+router.get('/:userid', function(req,res,next){
+	console.log("hit 3")
+	Product.find({creator:req.params.userid}).exec().then(function(userProducts){
+		res.json(userProducts)
+	})
+	.then(null,next);
+})
+
 // Increment Download on a Product
 router.put('/download', function (req, res, next) {
 	Product.findOneAndUpdate({_id: req.body.modelId}, { $inc: { timesDownloaded: 1 } }).exec()

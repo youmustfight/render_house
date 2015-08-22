@@ -3,7 +3,7 @@ var	_ = require('lodash');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product')
-var crypto = require('crypto');
+
 
 
 router.param('id', function (req, res, next, id) {
