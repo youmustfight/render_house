@@ -31,7 +31,7 @@ app.config(function ($stateProvider) {
 		templateUrl: 'js/product/detail/product.comments.html',
 		resolve: {
 			comments: function (Comment, model) {
-				return Comment.getComments(model.comments);
+				return Comment.getComments(model);
 			}
 		}
 	})

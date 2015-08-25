@@ -2,9 +2,9 @@
 
 app.factory('Comment', function ($http, User) {
 	return {
-		getComments: function (comments){
+		getComments: function (model){
 			var populatedComments = [];
-			comments.forEach( function (comment) {
+			model.comments.forEach( function (comment) {
 				var user = new User({_id: comment.user});
 				user.fetch().then(function (obj) {
 					// console.log(obj);
